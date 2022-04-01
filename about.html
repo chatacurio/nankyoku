@@ -303,7 +303,7 @@ dash {
           <!-- /.l-cols__header col --></div>
 
           <!-- ヘッダーナビゲーション -->
-          <div class="l-cols__header--col is-globalNavigation">
+          <div class="l-cols__header--col is-sns">
             <follow-sns :state-class-name="['is-header']" />
             
           <!-- /.l-cols__header col --></div>
@@ -325,7 +325,7 @@ dash {
     
     <main class="main">
       
-<article class="f-article" :ref="showHeaderThreshold">
+<article class="f-article">
   <div class="f-article--body">
     <section class="f-section__hero is-about">
       <div class="f-section__hero--body">
@@ -365,7 +365,7 @@ dash {
     <!-- /.f-section__hero --></section>
 
     
-    <section class="f-section__about">
+    <section class="f-section__about" :ref="showHeaderThreshold">
       <div class="f-section__about--body">
         <div class="l-unit__about is-right">
           <div class="l-unit__about--header">
