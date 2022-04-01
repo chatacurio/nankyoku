@@ -255,6 +255,16 @@ dash {
 
   <link href="/nankyoku/assets/styles/app.min.css" rel="stylesheet">
 
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z5QQEQ8B4N"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-Z5QQEQ8B4N');
+  </script>
+
   <!-- /local codes -->
 </head>
 <body class="body" data-pageId="about">
@@ -282,7 +292,7 @@ dash {
           <div class="l-cols__header--col is-logo">
             <div class="o-logo__nankyoku is-header">
               <p class="o-logo__nankyoku--item">
-                <a class="o-logo__nankyoku--link" href="/">
+                <a class="o-logo__nankyoku--link" :href="PAGE_PATH.MAIN.TOP">
                   <img
                     class="o-logo__nankyoku--image"
                     :src="`${$GLOBAL_NAME.IMAGES.DIRECTORY}${header.logo}`"
