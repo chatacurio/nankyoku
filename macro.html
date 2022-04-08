@@ -327,27 +327,104 @@ dash {
       
 <article class="f-article">
   <div class="f-article--body">
-    
-    <section class="f-section__tools is-calendar">
-      <div class="f-section__tools--body">
-        <div class="l-cols is-col2 is-vCenter" data-is-breakpoint="pc">
-          <div class="l-cols--col">
-            <h2 class="h2">マクロ</h2>
-          <!-- /.l-cols col --></div>
+    <section
+      v-for="(macroUnit, key, index) in macroList"
+      :id="key"
+      :class="[
+        'f-section__macro',
+        `is-${key}`,
+      ]"
+      :key="key">
+      <div class="f-section__macro--body">
+        <template v-if="index === 0">
+          <div class="o-heading__page">
+            <h1 class="o-heading__page--item">
+              フロントラインでよく使うマクロ
+            </h1>
+          <!-- /.o-heading__page --></div>
 
-          <div class="l-cols--col">
-            <macro-viewer :macro-text="macroList.target.text"></macro-viewer>
-          <!-- /.l-cols col --></div>
-        <!-- /.l-cols --></div>
+          <div class="l-cols is-center">
+            <div
+              class="l-cols--col"
+              v-for="(macroUnit, key) in macroList"
+              :key="key">
+              <button
+                class="button u-link__jump"
+                v-scroll-to="`#${key}`">
+                {{ macroUnit.title }}
+              </button>
+            <!-- /.l-cols col --></div>
+          <!-- /.l-cols --></div>
+        </template>
 
-      <!-- /.f-section__tools body --></div>
-    <!-- /.f-section__tools --></section>
+        <div class="o-heading__section">
+          <h2 class="o-heading__section--item">
+            {{ macroUnit.title }}
+          </h2>
+        <!-- /.o-heading__section --></div>
 
-    
-    <section class="f-section__tools is-secure">
-      <div class="f-section__tools--body">
-      <!-- /.f-section__tools body --></div>
-    <!-- /.f-section__tools --></section>
+        <p class="p" v-html="macroUnit.description" v-if="macroUnit.description"></p>
+
+        <div class="o-list__chatTypeSelector" v-if="macroUnit.chatTypeSelector.enable">
+          <ul class="o-list__chatTypeSelector--items">
+            
+            <li class="o-list__chatTypeSelector--item">
+              <div class="o-action__chatTypeSelector is-none">
+                <button
+                  class="o-action__chatTypeSelector--item"
+                  @click.prevent="changeChatType(macroUnit, chatTypes.NONE.id)"
+                  :disabled="isActive(macroUnit, chatTypes.NONE.id)">
+                  <span class="o-action__chatTypeSelector--icon">
+                    none
+                  </span>
+                  指定なし
+                </button>
+              <!-- /.o-action__chatTypeSelector --></div>
+            </li>
+
+            
+            <li class="o-list__chatTypeSelector--item">
+              <div class="o-action__chatTypeSelector is-pt">
+                <button
+                  class="o-action__chatTypeSelector--item"
+                  @click.prevent="changeChatType(macroUnit, chatTypes.PT.id)"
+                  :disabled="isActive(macroUnit, chatTypes.PT.id)">
+                  <span class="o-action__chatTypeSelector--icon">
+                    /p
+                  </span>
+                  パーティー
+                </button>
+              <!-- /.o-action__chatTypeSelector --></div>
+            </li>
+
+            
+            <li class="o-list__chatTypeSelector--item">
+              <div class="o-action__chatTypeSelector is-alliance">
+                <button
+                  class="o-action__chatTypeSelector--item"
+                  @click.prevent="changeChatType(macroUnit, chatTypes.ALLIANCE.id)"
+                  :disabled="isActive(macroUnit, chatTypes.ALLIANCE.id)">
+                  <span class="o-action__chatTypeSelector--icon">
+                    /a
+                  </span>
+                  アライアンス
+                </button>
+              <!-- /.o-action__chatTypeSelector --></div>
+            </li>
+          </ul>
+        <!-- /.o-list__chatTypeSelector --></div>
+
+        <macro-viewer
+          :chat-type="getChatTypeKey(macroUnit.chatTypeSelector.id)"
+          :enable-chat-type="macroUnit.chatTypeSelector.enable"
+          :title="macro.title"
+          :description="macro.description"
+          :rows="macro.rows ? macro.rows : 1"
+          :note-list="macro.noteList ? macro.noteList : []"
+          v-for="(macro, key) in macroUnit.macro"
+          :key="key" />
+      <!-- /.f-section__macro body --></div>
+    <!-- /.f-section__macro --></section>
   <!-- /.f-article body --></div>
 <!-- /.f-article --></article>
 
@@ -402,6 +479,8 @@ dash {
     </footer>
 
     <navigation-drawer></navigation-drawer>
+
+    <messages-notice-toast />
 
     
     <section class="f-section__loading" v-cloak>
