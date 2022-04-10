@@ -39,9 +39,12 @@
   overflow: scroll
 }
 
-.is-lazyload,
-.is-lazyloading {
-  max-width: 64px;
+img.is-lazyload,
+img.is-lazyloading,
+img[data-is-liquid="true"].is-lazyload,
+img[data-is-liquid="true"].is-lazyloading {
+  width: 30%;
+  max-width: 128px;
 }
 
 .f-section__loading {

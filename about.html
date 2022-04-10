@@ -39,9 +39,12 @@
   overflow: scroll
 }
 
-.is-lazyload,
-.is-lazyloading {
-  max-width: 64px;
+img.is-lazyload,
+img.is-lazyloading,
+img[data-is-liquid="true"].is-lazyload,
+img[data-is-liquid="true"].is-lazyloading {
+  width: 30%;
+  max-width: 128px;
 }
 
 .f-section__loading {
@@ -377,8 +380,9 @@ dash {
           <div class="l-unit__about--image">
             <div class="o-figure__about">
               <img
-                class="o-figure__about--item"
-                :src="`${$GLOBAL_NAME.IMAGES.DIRECTORY}pic_about_01.jpg`"
+                class="o-figure__about--item is-lazyload"
+                :src="`${$GLOBAL_NAME.IMAGES.DIRECTORY}${$GLOBAL_NAME.IMAGES.LOADING_IMAGE_FILE}`"
+                :data-src="`${$GLOBAL_NAME.IMAGES.DIRECTORY}pic_about_01.jpg`"
                 alt="">
             <!-- /.o-figure__about --></div>
           <!-- /.l-unit__about image --></div>
@@ -404,8 +408,9 @@ dash {
           <div class="l-unit__about--image">
             <div class="o-figure__about">
               <img
-                class="o-figure__about--item"
-                :src="`${$GLOBAL_NAME.IMAGES.DIRECTORY}pic_about_02.jpg`"
+                class="o-figure__about--item is-lazyload"
+                :src="`${$GLOBAL_NAME.IMAGES.DIRECTORY}${$GLOBAL_NAME.IMAGES.LOADING_IMAGE_FILE}`"
+                :data-src="`${$GLOBAL_NAME.IMAGES.DIRECTORY}pic_about_02.jpg`"
                 alt="">
             <!-- /.o-figure__about --></div>
           <!-- /.l-unit__about image --></div>
@@ -428,8 +433,9 @@ dash {
           <div class="l-unit__about--image">
             <div class="o-figure__about">
               <img
-                class="o-figure__about--item"
-                :src="`${$GLOBAL_NAME.IMAGES.DIRECTORY}pic_about_03.jpg`"
+                class="o-figure__about--item is-lazyload"
+                :src="`${$GLOBAL_NAME.IMAGES.DIRECTORY}${$GLOBAL_NAME.IMAGES.LOADING_IMAGE_FILE}`"
+                :data-src="`${$GLOBAL_NAME.IMAGES.DIRECTORY}pic_about_03.jpg`"
                 alt="">
             <!-- /.o-figure__about --></div>
           <!-- /.l-unit__about image --></div>
@@ -441,7 +447,6 @@ dash {
             </p>
           <!-- /.l-unit__about description --></div>
         <!-- /.l-unit__about --></div>
-
       <!-- /.f-section__about body --></div>
     <!-- /.f-section__about --></section>
 

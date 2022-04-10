@@ -39,9 +39,12 @@
   overflow: scroll
 }
 
-.is-lazyload,
-.is-lazyloading {
-  max-width: 64px;
+img.is-lazyload,
+img.is-lazyloading,
+img[data-is-liquid="true"].is-lazyload,
+img[data-is-liquid="true"].is-lazyloading {
+  width: 30%;
+  max-width: 128px;
 }
 
 .f-section__loading {
@@ -382,10 +385,14 @@ dash {
 
         <div class="l-cols--col">
           <div class="o-action__youtube">
-            <a class="o-action__youtube--item">
+            <span class="o-action__youtube--item is-overlay">
+              近日公開予定！
+            </span>
+            <a class="o-action__youtube--item is-link">
               <img
-                class="o-action__youtube--image"
-                :src="`${$GLOBAL_NAME.IMAGES.DIRECTORY}pic_youtube_01.jpg`"
+                class="o-action__youtube--image is-lazyload"
+                :src="`${$GLOBAL_NAME.IMAGES.DIRECTORY}${$GLOBAL_NAME.IMAGES.LOADING_IMAGE_FILE}`"
+                :data-src="`${$GLOBAL_NAME.IMAGES.DIRECTORY}pic_youtube_01.jpg`"
                 alt="">
             </a>
           <!-- /.o-action__youtube --></div>
@@ -410,8 +417,9 @@ dash {
 
       <div class="o-figure__banner is-home">
         <img
-          class="o-figure__banner--item"
-          :src="`${$GLOBAL_NAME.IMAGES.DIRECTORY}banner_top_01.jpg`"
+          class="o-figure__banner--item is-lazyload"
+          :src="`${$GLOBAL_NAME.IMAGES.DIRECTORY}${$GLOBAL_NAME.IMAGES.LOADING_IMAGE_FILE}`"
+          :data-src="`${$GLOBAL_NAME.IMAGES.DIRECTORY}banner_top_01.jpg`"
           alt="">
       <!-- /.o-figure__banner --></div>
     <!-- /.f-section__home body --></div>
@@ -435,12 +443,13 @@ dash {
             <!-- /.l-unit__information header --></div>
 
             <div class="l-unit__information--image">
-              <div class="o-figure__post">
+              <div class="o-figure__information">
                 <img
-                  class="o-figure__post--item"
-                  :src="info.image"
+                  class="o-figure__information--item is-lazyload"
+                  :src="`${$GLOBAL_NAME.IMAGES.DIRECTORY}${$GLOBAL_NAME.IMAGES.LOADING_IMAGE_FILE}`"
+                  :data-src="info.image"
                   alt="">
-              <!-- /.o-figure__post --></div>
+              <!-- /.o-figure__information --></div>
             <!-- /.l-unit__information image --></div>
 
             <div class="l-unit__information--description">
