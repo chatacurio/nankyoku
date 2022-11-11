@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+
+  <title>南極クイズ | 南極。</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+  <meta name="description" content="Final Fantasy XIV PvP コミュニティ『南極』の公式サイトです。（エイプリルフールネタ）">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="webview:title" content="南極クイズ">
+  <meta name="theme-color" content="#000">
+
+  
+    <meta property="og:url" content="https://chatacurio.github.io/nankyoku/quiz/event/">
+    <meta property="og:title" content="南極クイズ | 南極。">
+    <meta property="og:description" content="Final Fantasy XIV PvP コミュニティ『南極』の公式サイトです。（エイプリルフールネタ）">
+    <meta property="og:site_name" content="南極。">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://chatacurio.github.io/nankyoku/assets/images/ogimage_01.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@Chata_Curio" />
+    <meta name="twitter:title" content="南極クイズ | 南極。">
+    <meta name="twitter:description" content="Final Fantasy XIV PvP コミュニティ『南極』の公式サイトです。（エイプリルフールネタ）">
+  
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@300;500;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@900&display=swap" rel="stylesheet">
+
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@900&display=swap" rel="stylesheet">
+
+  <link rel="icon" href="favicon.ico">
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="apple-touch-icon-precomposed" href="apple-touch-icon.png" />
+
+  <style>
+    .body[v-cloak] {
+  overflow: scroll
+}
+
+img.is-lazyload,
+img.is-lazyloading,
+img[data-is-liquid="true"].is-lazyload,
+img[data-is-liquid="true"].is-lazyloading {
+  width: 30%;
+  max-width: 128px;
+}
+
+.f-section__loading {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 1);
+  z-index: 30;
+}
+
+.f-section__loading[v-cloak] {
+  display: block;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.f-section__loading:not([v-cloak]) {
+  animation: hideLoading 1s ease forwards;
+}
+
+.f-section__loading--body {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+@keyframes hideLoading {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  99% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(-9999px);
+  }
+}
+
+.l-unit__loading {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.l-unit__loading--image {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  z-index: 31;
+}
+
+.l-unit__loading--description {
+  width: 100%;
+}
+
+.o-logo__nankyoku.is-loading {
+  opacity: 1;
+}
+
+.o-logo__nankyoku.is-loading > .o-logo__nankyoku--item {
+  width: 20%;
+  max-width: 320px;
+  height: auto;
+  margin: 0 auto;
+}
+
+@media screen and (max-width:1024px) {
+  .o-logo__nankyoku.is-loading > .o-logo__nankyoku--item {
+    width: 30%;
+    max-width: none;
+  }
+}
+
+@media screen and (max-width:768px) {
+  .o-logo__nankyoku.is-loading > .o-logo__nankyoku--item {
+    width: 40%;
+    max-width: none;
+  }
+}
+
+@media screen and (max-width:520px) {
+  .o-logo__nankyoku.is-loading > .o-logo__nankyoku--item {
+    width: 50%;
+    max-width: none;
+  }
+}
+
+.o-figure__loading {
+  width: 15%;
+  max-width: 240px;
+  position: relative;
+  margin: 0px auto;
+}
+
+@media screen and (max-width:1024px) {
+  .o-figure__loading {
+    width: 23%;
+    max-width: none;
+  }
+}
+
+@media screen and (max-width:768px) {
+  .o-figure__loading {
+    width: 32%;
+    max-width: none;
+  }
+}
+
+@media screen and (max-width:520px) {
+  .o-figure__loading {
+    width: 40%;
+    max-width: none;
+  }
+}
+
+.o-figure__loading:before {
+  content: '';
+  display: block;
+  padding-top: 100%;
+}
+
+.o-figure__loading--item {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  transform-origin: center center;
+  -webkit-transform-origin: center center;
+  -ms-transform-origin: center center;
+  animation: rotate 2s linear infinite;
+  -webkit-animation: rotate 2s linear infinite;
+}
+
+.o-figure__loading--path {
+  stroke-dasharray: 1, 200;
+  stroke-dashoffset: 0;
+  stroke: #fff;
+  stroke-linecap: round;
+  animation: dash 1.5s ease-in-out infinite;
+  -webkit-animation: dash 1.5s ease-in-out infinite;
+}
+
+@-webkit-keyframes
+rotate {
+  100% {
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes
+rotate {
+  100% {
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes
+dash {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -35;
+  }
+  100% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -124;
+  }
+}
+
+@keyframes
+dash {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -35;
+  }
+  100% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -124;
+  }
+}
+
+    
+  </style>
+
+  <link href="/nankyoku/assets/styles/app.min.css" rel="stylesheet">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z5QQEQ8B4N"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-Z5QQEQ8B4N');
+  </script>
+
+  <!-- /local codes -->
+</head>
+<body class="body" data-pageId="quiz">
+
+<div
+  class="f-container is-quiz"
+  :class="{ 'is-blackOut': isBlackOut }"
+  id="app"
+  :data-is-screen-lock="isLock ? 'true' : 'false'">
+
+  <div class="f-container--body">
+    
+    <header
+  class="f-header"
+  :class="[
+    'f-header',
+    { 'is-fill': header.isOverThreshold },
+  ]"
+  ref="header">
+  <div class="f-header--body">
+    <section class="f-section__header">
+      <div class="f-section__header--body">
+        <div class="l-cols__header">
+          <!-- ロゴ -->
+          <div class="l-cols__header--col is-logo">
+            <div class="o-logo__nankyoku is-header">
+              <p class="o-logo__nankyoku--item">
+                <a class="o-logo__nankyoku--link" :href="PAGE_PATH.MAIN.TOP">
+                  <img
+                    class="o-logo__nankyoku--image"
+                    :src="`${$GLOBAL_NAME.IMAGES.DIRECTORY}${header.logo}`"
+                    alt="南極。">
+                </a>
+              </p>
+            <!-- /.o-logo__nankyoku --></div>
+          <!-- /.l-cols__header col --></div>
+
+          <!-- ヘッダーナビゲーション -->
+          <div class="l-cols__header--col is-sns">
+            <follow-sns :state-class-name="['is-header']" />
+            
+          <!-- /.l-cols__header col --></div>
+
+          <div class="l-cols__header--col is-hamburger">
+            <div class="o-action__hamburger u-link__tooltip" data-tooltip="メニュー">
+              <button class="o-action__hamburger--item" @click.prevent="showGlobalNavigation">
+                メニュー
+              </button>
+            <!-- /.o-action__hamburger --></div>
+          <!-- /.l-cols__header col --></div>
+        <!-- /.l-cols__header --></div>
+      <!-- /.f-section__header body --></div>
+    <!-- /.f-section__header --></section>
+  <!-- /.f-header body --></div>
+<!-- /.f-header --></header>
+
+
+    
+    <main class="main">
+      
+<article class="f-article">
+  <div class="f-article--body">
+    <section class="f-section__hero is-quiz">
+      <div
+        class="f-section__hero--body"
+        :style="{
+          backgroundPosition: `${hero.positionX}px top`
+        }">
+        <div class="l-rows__hero is-quiz">
+          <div class="l-rows__hero--row is-logo">
+            <div class="o-heading__page is-quiz">
+              <h1 class="o-heading__page--item">
+                南極頭脳王決定戦
+              </h1>
+            <!-- /.o-heading__page --></div>
+          <!-- /.l-rows__hero row --></div>
+
+          <div class="l-rows__hero--row is-caption">
+            <div class="o-label__slogan is-quiz">
+              <p class="o-label__slogan--item">
+                最強のバカは誰だ
+              </p>
+            <!-- /.o-label__slogan --></div>
+          <!-- /.l-rows__hero row --></div>
+
+          <div class="l-rows__hero--row is-action">
+            <div class="o-action__scroll is-quiz">
+              <button class="o-action__scroll--item" @click.prevent="scrollToRule">
+                <img
+                  class="img"
+                  :src="`${$GLOBAL_NAME.IMAGES.DIRECTORY}label_quiz_02.png`"
+                  alt="">
+              </button>
+            <!-- /.o-action__scroll --></div>
+          <!-- /.l-rows__hero row --></div>
+        <!-- /.l-rows__hero --></div>
+      <!-- /.f-section__hero body --></div>
+    <!-- /.f-section__hero --></section>
+
+    <section
+      id="rule"
+      class="f-section__quiz is-fill__lightBrown"
+      v-if="phase >= QUIZ_PHASE.READY">
+      <div class="f-section__quiz--body">
+        <div class="o-heading__section is-quiz">
+          <h2 class="o-heading__section--item">
+            ルール説明
+          </h2>
+        <!-- /.o-heading__section --></div>
+
+        <div class="o-list__rule is-quiz">
+          <ul class="o-list__rule--items">
+            <li class="o-list__rule--item">START を押すと自動でテストが開始されます。</li>
+            <li class="o-list__rule--item">出題教科は国語、算数、理科、社会、英語、時事・一般常識の 6 教科です。</li>
+            <li class="o-list__rule--item">1 教科あたり 5 問出題されます。</li>
+            <li class="o-list__rule--item">各問には制限時間があり、10秒ほど経過すると自動で次の問題へ移ります。<br>
+            （前の問題に戻ることはできません。）</li>
+          </ul>
+        <!-- /.o-list__rule --></div>
+
+        <div class="o-action__quiz is-start">
+          <button class="o-action__quiz--item" @click.prevent="startQuiz">
+            START
+          </button>
+        <!-- /.o-action__quiz --></div>
+      <!-- /.f-section__quiz --></div>
+    <!-- /.f-section__quiz --></section>
+
+    <template v-for="(section, sectionIndex) in quiz">
+      <section
+        :id="`section-${sectionIndex + 1}`"
+        class="f-section__quiz is-timer is-fill__brown"
+        v-if="current.sectionIndex === sectionIndex">
+        <div class="f-section__quiz--body">
+          <template v-for="(item, questionIndex) in section.items">
+            <div class="l-unit__quiz" v-if="current.questionIndex === questionIndex">
+              <div class="l-unit__quiz--header">
+                <div class="o-heading__section is-quiz">
+                  <h2 class="o-heading__section--item">
+                    {{ section.title }}
+                  </h2>
+                <!-- /.o-heading__section --></div>
+              <!-- /.l-unit__quiz header --></div>
+
+              <div
+                class="l-unit__quiz--image u-link__tooltip"
+                data-tooltip="クリックで拡大表示"
+                v-if="item.image">
+                <img
+                  class="img is-lazyload u-device__cursorPointer"
+                  :src="`${$GLOBAL_NAME.IMAGES.DIRECTORY}${$GLOBAL_NAME.IMAGES.LOADING_IMAGE_FILE}`"
+                  :data-src="`${$GLOBAL_NAME.IMAGES.DIRECTORY}${item.image}`"
+                  data-is-liquid="true"
+                  alt=""
+                  @click.prevent="showModal">
+              <!-- /.l-unit__quiz image --></div>
+
+              <div class="l-unit__quiz--description">
+                <div class="o-heading__quiz">
+                  <h3 class="o-heading__quiz--item">
+                    <span class="o-heading__quiz--label is-index">問{{ questionIndex + 1 }}.</span>{{ item.title }}
+                  </h3>
+                <!-- /.o-heading__quiz --></div>
+
+                <template v-if="item.selector.length">
+                  <div
+                    :class="[
+                      'o-list__quiz',
+                      `is-col${item.col}`
+                    ]">
+                    <ul class="o-list__quiz--items">
+                      <li
+                        class="o-list__quiz--item"
+                        v-for="selector in item.selector"
+                        :key="selector.value">
+                        <div
+                          :class="[
+                            'o-input__quiz',
+                            getStyleClassByAnswerType(item.type),
+                            { 'is-active': isCheckedSelector(item.type, selector.value, item.value) },
+                          ]">
+                          <label class="o-input__quiz--label">
+                            <input
+                              class="o-input__quiz--item"
+                              :type="item.type"
+                              :value="selector.value"
+                              v-model="item.value"
+                              :disabled="phase >= QUIZ_PHASE.DONE">
+                            {{ selector.label }}
+                          </label>
+                        <!-- /.o-input__quiz --></div>
+                      </li>
+                    </ul>
+                  <!-- /.o-list__quiz --></div>
+                </template>
+                <template v-else>
+                  <div
+                    :class="[
+                      'o-input__quiz',
+                      getStyleClassByAnswerType(item.type)
+                    ]">
+                    <template v-if="item.type === ANSWER_TYPE.TEXT">
+                      <input
+                        class="o-input__quiz--item"
+                        type="text"
+                        placeholder="ここに入力してください"
+                        v-model="item.value"
+                        :disabled="phase >= QUIZ_PHASE.DONE">
+                    </template>
+                    <template v-if="item.type === ANSWER_TYPE.TEXTAREA">
+                      <textarea
+                        class="o-input__quiz--item"
+                        cols="30"
+                        rows="5"
+                        placeholder="ここに入力してください"
+                        v-model="item.value"
+                        :disabled="phase >= QUIZ_PHASE.DONE">
+                      </textarea>
+                    </template>
+                  <!-- /.o-input__quiz --></div>
+                </template>
+              <!-- /.l-unit__quiz description --></div>
+
+              <div class="l-unit__quiz--action">
+                <div class="o-action__quiz is-next">
+                  <button class="o-action__quiz--item" @click.prevent="next">
+                    次へ
+                  </button>
+                <!-- /.o-action__quiz --></div>
+              <!-- /.l-unit__quiz action --></div>
+
+              <div
+                :class="[
+                  'l-unit__quiz--footer',
+                  'is-timer',
+                  { 'is-hide': !item.timer.value },
+                ]">
+                <div class="o-label__timer is-quiz">
+                  <p
+                    class="o-label__timer--item"
+                    :style="{
+                      backgroundImage: `radial-gradient(#99968d 55%, transparent 56%), conic-gradient(transparent 0% ${getTimerMeter(item.timer.value)}%, #4d4b46 ${getTimerMeter(item.timer.value)}% 100%)`
+                    }">
+                    {{ item.timer.value }}
+                  </p>
+                <!-- /.o-label__timer --></div>
+              <!-- /.l-unit__quiz footer --></div>
+            <!-- /.l-unit__quiz --></div>
+          </template>
+
+          <modal-lite
+            :is-show.sync="isShowModal"
+            :additional-style-class="['is-huge']">
+            <template slot="description">
+              <img
+                class="img is-lazyload"
+                :src="`${$GLOBAL_NAME.IMAGES.DIRECTORY}${$GLOBAL_NAME.IMAGES.LOADING_IMAGE_FILE}`"
+                :data-src="`${$GLOBAL_NAME.IMAGES.DIRECTORY}${quiz[current.sectionIndex].items[current.questionIndex].image}`"
+                data-is-liquid="true"
+                alt="">
+            </template>
+          </modal-lite>
+
+          
+          <div
+            class="o-label__done is-quiz"
+            v-if="phase >= QUIZ_PHASE.DONE"
+            ref="doneTelop">
+            <img
+              class="o-label__done--item"
+              :src="`${$GLOBAL_NAME.IMAGES.DIRECTORY}label_quiz_03.png`"
+              alt="QUEST COMPLETE">
+          <!-- /.o-label__done --></div>
+        <!-- /.f-section__quiz body --></div>
+      <!-- /.f-section__quiz --></section>
+    </template>
+
+    <section
+      id="section-score"
+      class="f-section__quiz is-fill__lightBrown"
+      v-if="phase >= QUIZ_PHASE.SCORE">
+      <div class="f-section__quiz--body">
+        <div class="o-heading__section is-quiz">
+          <h2 class="o-heading__section--item">
+            結果発表
+          </h2>
+        <!-- /.o-heading__section --></div>
+
+        <section
+          :id="`section-score-${sectionIndex}`"
+          :class="[
+            'f-section__quiz',
+            'is-score',
+            section.isShowScore ? 'is-active' : 'is-hide',
+          ]"
+          v-for="(section, sectionIndex) in quiz"
+          :key="sectionIndex">
+          <div class="f-section__quiz--body">
+            <div class="o-heading__part is-quiz">
+              <h3 class="o-heading__part--item u-text__center">
+                {{ section.title }}
+              </h3>
+            <!-- /.o-heading__part --></div>
+
+            <div class="o-list__score is-quiz">
+              
+              <dl
+                :class="[
+                  'o-list__score--unit',
+                  { 'is-active': item.score.isShow },
+                  { 'is-correct': item.score.isCorrect === true },
+                  { 'is-incorrect': item.score.isCorrect === false },
+                ]"
+                v-for="(item, questionIndex) in section.items"
+                :key="questionIndex">
+                <dt class="o-list__score--term">
+                  問{{ questionIndex + 1 }}. {{ item.title }}
+                </dt>
+                <dd class="o-list__score--description">
+                  <div class="l-cols__quiz">
+                    <div class="l-cols__quiz--col is-image" v-if="item.image">
+                      <img
+                        class="img is-lazyload"
+                        :src="`${$GLOBAL_NAME.IMAGES.DIRECTORY}${$GLOBAL_NAME.IMAGES.LOADING_IMAGE_FILE}`"
+                        :data-src="`${$GLOBAL_NAME.IMAGES.DIRECTORY}${item.image}`"
+                        data-is-liquid="true"
+                        alt="">
+                    <!-- /.l-cols__quiz col --></div>
+
+                    <div class="l-cols__quiz--col is-description">
+                      <p class="p" v-html="getAnswerAsRenderText(item.value)"></p>
+                    <!-- /.l-cols__quiz col --></div>
+
+                    <div class="l-cols__quiz--col is-modelAnswer" v-if="item.modelAnswer">
+                      <p class="p" v-html="getModelAnswerAsRenderText(item.modelAnswer)"></p>
+                    <!-- /.l-cols__quiz col --></div>
+                  <!-- /.l-cols__quiz --></div>
+                </dd>
+              </dl>
+            <!-- /.o-list__score --></div>
+          <!-- /.f-section__quiz body --></div>
+        <!-- /.f-section__quiz --></section>
+
+        
+        <div class="o-label__score is-quiz">
+          <p class="o-label__score--item" v-if="phase >= QUIZ_PHASE.TOTAL_SCORE">
+            {{ totalCorrect }} 点
+          </p>
+        <!-- /.o-label__score --></div>
+
+        <share-services
+          :activate="{ twitter: true, facebook: true, line: true, }"
+          :additional-style-class="['is-quiz']"
+          :has-tool-tip="true"
+          twitter-hash-tags="#南極頭脳王決定戦 #最強のバカは誰だ #南極 #FFXIV #おはろあ">
+        </share-services>
+      <!-- /.f-section__quiz body --></div>
+    <!-- /.f-section__quiz --></section>
+  <!-- /.f-article body --></div>
+<!-- /.f-article --></article>
+
+
+      <share-services-global
+        :activate="{ twitter: true }"
+        :stack-anchor-position="footerPosition">
+        
+      </share-services-global>
+    </main>
+
+    
+    <footer class="footer" ref="footer">
+      
+<section class="f-section__footerNavigation">
+  
+  <div class="f-section__footerNavigation--body">
+    <div class="l-cols__footerNavigation">
+      <navigation-global :state-class-name="['is-footer']" />
+    <!-- /.l-cols__footerNavigation --></div>
+  <!-- /.f-section__footerNavigation body --></div>
+<!-- /.f-section__footerNavigation --></section>
+
+<section class="f-section__footer">
+  
+  <div class="f-section__footer--body">
+    <div class="o-logo__nankyoku is-footer">
+      <h1 class="o-logo__nankyoku--item">
+        <a class="o-logo__nankyoku--link" :href="PAGE_PATH.MAIN.TOP">
+          <img
+            class="o-logo__nankyoku--image"
+            :src="`${$GLOBAL_NAME.IMAGES.DIRECTORY}logo_black.svg`"
+            alt="南極。">
+        </a>
+      </h1>
+    <!-- /.o-logo__nankyoku --></div>
+  <!-- /.f-section__footer body --></div>
+
+  
+  <div class="f-section__footer--body">
+    <follow-sns :state-class-name="['is-footer']"></follow-sns>
+
+    <div class="o-label__copyright is-footer">
+      <p class="o-label__copyright--item">
+        This website created by Chata Curio in Ifrit server.<br>
+        copyright (c) 2022- 南極。 Some Rights Reserved.
+      </p>
+    <!-- /.o-label__copyright --></div>
+  <!-- /.f-section__footer body --></div>
+<!-- /.f-section__footer --></section>
+
+    </footer>
+
+    <navigation-drawer></navigation-drawer>
+
+    <messages-notice-toast />
+
+    
+    <section class="f-section__loading" v-cloak>
+      <div class="f-section__loading--body">
+        <div class="l-unit__loading">
+          <div class="l-unit__loading--image">
+            <div class="o-logo__nankyoku is-loading">
+              <p class="o-logo__nankyoku--item">
+                <img
+                  class="img"
+                  src="/nankyoku/assets/images/logo_white.svg"
+                  alt=""
+                  width="0"
+                  height="0">
+              </p>
+            <!-- /.o-logo__nankyoku --></div>
+          <!-- /.l-unit__loading image --></div>
+
+          <div class="l-unit__loading--description">
+            <div class="o-figure__loading">
+              <svg class="o-figure__loading--item" viewBox="25 25 50 50">
+                <circle
+                  class="o-figure__loading--path"
+                  cx="50"
+                  cy="50"
+                  r="20"
+                  fill="none"
+                  stroke-width="2"
+                  stroke-miterlimit="10">
+              </svg>
+            <!-- /.o-figure__loading --></div>
+          <!-- /.l-unit__loading description --></div>
+        <!-- /.l-unit__loading --></div>
+      <!-- /.f-section__loading body --></div>
+    <!-- /.f-section__loading --></section>
+  <!-- /.f-container body --></div>
+<!-- /.f-container --></div>
+</body>
+
+<script>
+
+
+var ANTARCTIC_APP = ANTARCTIC_APP || {};
+ANTARCTIC_APP.currentTime = new Date();
+ANTARCTIC_APP.vm = null;
+ANTARCTIC_APP.reactiveData = {
+  local: {  },
+};
+</script>
+
+<script src="/nankyoku/assets/scripts/bundle.production.vendor.min.js"></script>
+<script src="/nankyoku/assets/scripts/bundle.production.app.min.js"></script>
+</html>
