@@ -228,7 +228,7 @@
     background-image: url(/nankyoku/assets/images/youtube_white.svg); }
 
 .i-scale.is-carousel {
-  background-image: url(/assets/images/icons.9f2c80c5b67b77ce5171bf8bbc836cf0.png);
+  background-image: url(/assets/images/icons.d60b0b94756a7df0d95baf21e5f6485f.png);
   background-position: 0px 0px;
   width: 48px;
   height: 48px;
@@ -5529,6 +5529,7 @@ label {
         top: 50%;
         left: 50%;
         opacity: 0;
+        z-index: 1;
         -webkit-animation-fill-mode: both;
         animation-fill-mode: both;
         -webkit-animation-duration: 1s;
