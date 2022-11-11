@@ -606,6 +606,10 @@ dash {
                       <p class="p" v-html="getAnswerAsRenderText(item.value)"></p>
                     <!-- /.l-cols__quiz col --></div>
 
+                    <div class="l-cols__quiz--col is-answer" v-if="item.answer">
+                      <p class="p" v-html="getAnswerAsRenderText(item.answer)"></p>
+                    <!-- /.l-cols__quiz col --></div>
+
                     <div class="l-cols__quiz--col is-modelAnswer" v-if="item.modelAnswer">
                       <p class="p" v-html="getModelAnswerAsRenderText(item.modelAnswer)"></p>
                     <!-- /.l-cols__quiz col --></div>
@@ -622,13 +626,6 @@ dash {
             {{ totalCorrect }} 点
           </p>
         <!-- /.o-label__score --></div>
-
-        <button
-          class="button"
-          click.prevent="postQuiz"
-          v-if="phase >= QUIZ_PHASE.TOTAL_SCORE">
-          送信
-        </button>
 
         <share-services
           :activate="{ twitter: true, facebook: true, line: true, }"
