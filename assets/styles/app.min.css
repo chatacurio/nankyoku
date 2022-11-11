@@ -228,7 +228,7 @@
     background-image: url(/nankyoku/assets/images/youtube_white.svg); }
 
 .i-scale.is-carousel {
-  background-image: url(/assets/images/icons.d60b0b94756a7df0d95baf21e5f6485f.png);
+  background-image: url(/assets/images/icons.0dc21b80a37a6e386430acdc2fecf2f1.png);
   background-position: 0px 0px;
   width: 48px;
   height: 48px;
@@ -2199,13 +2199,16 @@ label {
       padding: 3em 1em 1em;
       background-color: #d7d3c5; }
       .l-cols__quiz .l-cols__quiz--col.is-answer::before, .l-cols__quiz .l-cols__quiz--col.is-modelAnswer::before {
-        content: "模範解答";
         position: absolute;
         top: 0;
         left: 0;
         color: #fff;
         padding: 0.3em 1em;
         background-color: #99968d; }
+    .l-cols__quiz .l-cols__quiz--col.is-answer::before {
+      content: "正解"; }
+    .l-cols__quiz .l-cols__quiz--col.is-modelAnswer::before {
+      content: "模範解答"; }
     @media screen and (max-width: 1024px) {
       .l-cols__quiz {
         -webkit-box-orient: vertical;
