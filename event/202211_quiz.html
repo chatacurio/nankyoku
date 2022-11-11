@@ -623,6 +623,13 @@ dash {
           </p>
         <!-- /.o-label__score --></div>
 
+        <button
+          class="button"
+          click.prevent="postQuiz"
+          v-if="phase >= QUIZ_PHASE.TOTAL_SCORE">
+          送信
+        </button>
+
         <share-services
           :activate="{ twitter: true, facebook: true, line: true, }"
           :additional-style-class="['is-quiz']"
