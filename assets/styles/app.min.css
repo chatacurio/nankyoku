@@ -228,7 +228,7 @@
     background-image: url(/nankyoku/assets/images/youtube_white.svg); }
 
 .i-scale.is-carousel {
-  background-image: url(/assets/images/icons.f4a48e9d4872895803839cad3d1a7944.png);
+  background-image: url(/assets/images/icons.ee67e40853f39d0cbbfd75bcb126a75e.png);
   background-position: 0px 0px;
   width: 48px;
   height: 48px;
@@ -2350,8 +2350,8 @@ label {
       animation-name: fadeIn__quizLogo;
       -webkit-animation-fill-mode: forwards;
       animation-fill-mode: forwards;
-      -webkit-animation-duration: 3s;
-      animation-duration: 3s;
+      -webkit-animation-duration: 4s;
+      animation-duration: 4s;
       -webkit-animation-timing-function: ease;
       animation-timing-function: ease; }
     .l-rows__hero.is-quiz .l-rows__hero--row.is-noanimation {
@@ -2460,20 +2460,20 @@ label {
 @-webkit-keyframes fadeIn__quizLogo {
   0% {
     opacity: 0; }
-  69% {
+  64% {
     opacity: 0; }
-  70% {
-    opacity: 0; }
+  65% {
+    opacity: 1; }
   100% {
     opacity: 1; } }
 
 @keyframes fadeIn__quizLogo {
   0% {
     opacity: 0; }
-  69% {
+  64% {
     opacity: 0; }
-  70% {
-    opacity: 0; }
+  65% {
+    opacity: 1; }
   100% {
     opacity: 1; } }
   .l-rows__share.is-global .l-rows__share--row {
