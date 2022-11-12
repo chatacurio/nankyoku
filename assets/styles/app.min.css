@@ -228,7 +228,7 @@
     background-image: url(/nankyoku/assets/images/youtube_white.svg); }
 
 .i-scale.is-carousel {
-  background-image: url(/assets/images/icons.ee67e40853f39d0cbbfd75bcb126a75e.png);
+  background-image: url(/assets/images/icons.955f2cee08f6146b6e3e023260fb46a4.png);
   background-position: 0px 0px;
   width: 48px;
   height: 48px;
@@ -2359,13 +2359,17 @@ label {
       animation-name: none; }
     @media screen and (max-width: 540px) {
       .l-rows__hero.is-quiz::before {
-        top: 50%;
+        top: 43.75%;
         -webkit-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);
         background-position: center center; }
+      .l-rows__hero.is-quiz .l-rows__hero--row.is-logo {
+        height: 56.97151%; }
+      .l-rows__hero.is-quiz .l-rows__hero--row.is-caption {
+        height: 43.02849%; }
       .l-rows__hero.is-quiz .l-rows__hero--row.is-action {
         top: inherit;
-        bottom: 6%;
+        bottom: 10%;
         -webkit-transform: translateX(-50%);
         transform: translateX(-50%); } }
 
