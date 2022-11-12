@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
 
-  <title>南極クイズ | 南極。</title>
+  <title>南極 頭脳王決定戦 ～最強のバカは誰だ～ | 南極。</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
 
   <meta name="description" content="Final Fantasy XIV PvP コミュニティ『南極』の公式サイトです。（エイプリルフールネタ）">
   <meta name="format-detection" content="telephone=no">
-  <meta name="webview:title" content="南極クイズ">
+  <meta name="webview:title" content="南極 頭脳王決定戦 ～最強のバカは誰だ～">
   <meta name="theme-color" content="#000">
 
   
-    <meta property="og:url" content="https://chatacurio.github.io/nankyoku/quiz/event/">
-    <meta property="og:title" content="南極クイズ | 南極。">
+    <meta property="og:url" content="https://chatacurio.github.io/nankyoku//event/202211_quiz.html">
+    <meta property="og:title" content="南極 頭脳王決定戦 ～最強のバカは誰だ～ | 南極。">
     <meta property="og:description" content="Final Fantasy XIV PvP コミュニティ『南極』の公式サイトです。（エイプリルフールネタ）">
     <meta property="og:site_name" content="南極。">
     <meta property="og:type" content="website">
@@ -21,7 +21,7 @@
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@Chata_Curio" />
-    <meta name="twitter:title" content="南極クイズ | 南極。">
+    <meta name="twitter:title" content="南極 頭脳王決定戦 ～最強のバカは誰だ～ | 南極。">
     <meta name="twitter:description" content="Final Fantasy XIV PvP コミュニティ『南極』の公式サイトです。（エイプリルフールネタ）">
   
 
@@ -621,9 +621,17 @@ dash {
         <!-- /.f-section__quiz --></section>
 
         
-        <div class="o-label__score is-quiz">
+        <div id="section-total-score" class="o-label__score is-quiz">
           <p class="o-label__score--item" v-if="phase >= QUIZ_PHASE.TOTAL_SCORE">
-            {{ totalCorrect }} 点
+            <span class="o-label__score--label is-score">
+              {{ totalCorrect }} 点
+            </span>
+            <span class="o-label__score--label is-total">
+              / {{ totalQuestionsAsCorrect }} 問中
+            </span>
+            <span class="o-label__score--label is-notUnique" v-if="totalNotUniqueQuestions">
+              ( + 採点外 {{ totalNotUniqueQuestions }} 問)
+            </span>
           </p>
         <!-- /.o-label__score --></div>
 

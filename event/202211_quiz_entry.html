@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
 
-  <title>南極クイズ - 事前登録 | 南極。</title>
+  <title>南極 頭脳王決定戦 ～最強のバカは誰だ～ - 事前登録 | 南極。</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
 
   <meta name="description" content="Final Fantasy XIV PvP コミュニティ『南極』の公式サイトです。（エイプリルフールネタ）">
   <meta name="format-detection" content="telephone=no">
-  <meta name="webview:title" content="南極クイズ - 事前登録">
+  <meta name="webview:title" content="南極 頭脳王決定戦 ～最強のバカは誰だ～ - 事前登録">
   <meta name="theme-color" content="#000">
 
   
-    <meta property="og:url" content="https://chatacurio.github.io/nankyoku/quiz-entry/event/">
-    <meta property="og:title" content="南極クイズ - 事前登録 | 南極。">
+    <meta property="og:url" content="https://chatacurio.github.io/nankyoku//event/202211_quiz_entry.html">
+    <meta property="og:title" content="南極 頭脳王決定戦 ～最強のバカは誰だ～ - 事前登録 | 南極。">
     <meta property="og:description" content="Final Fantasy XIV PvP コミュニティ『南極』の公式サイトです。（エイプリルフールネタ）">
     <meta property="og:site_name" content="南極。">
     <meta property="og:type" content="website">
@@ -21,7 +21,7 @@
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@Chata_Curio" />
-    <meta name="twitter:title" content="南極クイズ - 事前登録 | 南極。">
+    <meta name="twitter:title" content="南極 頭脳王決定戦 ～最強のバカは誰だ～ - 事前登録 | 南極。">
     <meta name="twitter:description" content="Final Fantasy XIV PvP コミュニティ『南極』の公式サイトです。（エイプリルフールネタ）">
   
 
@@ -365,9 +365,60 @@ dash {
         'is-gothic',
       ]"
       :is-show.sync="isShowModal">
-      <template slot="action">
+      
+      <template slot="action" v-if="isEnteredName && !isOverWrite">
+        <p class="p">
+          登録済み情報は以下です。<br>
+          このままクイズを実施する場合は「このまま」ボタンを押してください。
+        </p>
+
         <dl class="dl">
-          <dt class="dt">
+          <dt class="dt u-text__bold">
+            FF のキャラクター名
+          </dt>
+          <dd class="dd">
+            {{ information.characterName.value }}
+          </dd>
+        </dl>
+
+        <dl class="dl">
+          <dt class="dt u-text__bold">
+            ニックネーム<span class="span u-text__small">（テストの結果画面に表示されます）</span>
+          </dt>
+          <dd class="dd">
+            {{ information.nickName.value }}
+          </dd>
+        </dl>
+
+        <div class="o-note__general">
+          <ul class="o-note__general--items">
+            <li class="o-note__general--item">名前を変更する場合は、「変更」をクリックしてください。</li>
+          </ul>
+        </div>
+
+        <div class="l-cols is-col2">
+          <div class="l-cols--col">
+            <div class="o-action is-submit">
+              <button class="o-action--item" @click.prevent="transitionToQuiz">
+                このまま
+              </button>
+            <!-- /.o-action --></div>
+          <!-- /.l-cols col --></div>
+
+          <div class="l-cols--col">
+            <div class="o-action">
+              <button class="o-action--item" @click.prevent="isOverWrite = !isOverWrite">
+                変更
+              </button>
+            <!-- /.o-action --></div>
+          <!-- /.l-cols col --></div>
+        <!-- /.l-cols --></div>
+      </template>
+
+      
+      <template slot="action" v-if="!isEnteredName || isOverWrite">
+        <dl class="dl">
+          <dt class="dt u-text__bold">
             FF のキャラクター名
           </dt>
           <dd class="dd">
@@ -382,7 +433,7 @@ dash {
         </dl>
 
         <dl class="dl">
-          <dt class="dt">
+          <dt class="dt u-text__bold">
             ニックネーム<span class="span u-text__small">（テストの結果画面に表示されます）</span>
           </dt>
           <dd class="dd">

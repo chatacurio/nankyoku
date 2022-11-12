@@ -228,7 +228,7 @@
     background-image: url(/nankyoku/assets/images/youtube_white.svg); }
 
 .i-scale.is-carousel {
-  background-image: url(/assets/images/icons.0dc21b80a37a6e386430acdc2fecf2f1.png);
+  background-image: url(/assets/images/icons.f4a48e9d4872895803839cad3d1a7944.png);
   background-position: 0px 0px;
   width: 48px;
   height: 48px;
@@ -1495,7 +1495,12 @@ label {
       .f-section__quiz.is-score:first-child {
         margin-top: 0; }
       .f-section__quiz.is-score .f-section__quiz--body {
-        min-height: 0; }
+        min-height: 0;
+        padding-left: 80px;
+        padding-right: 80px; }
+    @media screen and (max-width: 540px) {
+      .f-section__quiz.is-score .f-section__quiz--body {
+        padding: 40px 20px; } }
 
 .l-cols {
   display: -webkit-box;
@@ -2170,7 +2175,7 @@ label {
     display: flex;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
-    margin-top: 40px; }
+    margin: 40px auto 0; }
     .l-cols__quiz:first-child {
       margin-top: 0; }
     .l-cols__quiz .l-cols__quiz--col.is-image {
@@ -2191,11 +2196,22 @@ label {
       flex-direction: column;
       -webkit-box-pack: center;
       -ms-flex-pack: center;
-      justify-content: center; }
+      justify-content: center;
+      position: relative;
+      padding: 3em 1em 1em;
+      background-color: whitesmoke; }
+      .l-cols__quiz .l-cols__quiz--col.is-description::before {
+        content: "回答";
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: #222;
+        padding: 0.3em 1em;
+        background-color: lightgray; }
     .l-cols__quiz .l-cols__quiz--col.is-answer, .l-cols__quiz .l-cols__quiz--col.is-modelAnswer {
       width: 100%;
       position: relative;
-      margin-top: 40px;
+      margin-top: 20px;
       padding: 3em 1em 1em;
       background-color: #d7d3c5; }
       .l-cols__quiz .l-cols__quiz--col.is-answer::before, .l-cols__quiz .l-cols__quiz--col.is-modelAnswer::before {
@@ -4778,24 +4794,31 @@ label {
   position: relative;
   line-height: 1;
   color: #b70002;
-  font-size: 10rem;
+  font-size: 2.6rem;
   font-family: 'Noto Sans JP', sans-serif;
   font-weight: 900;
   margin: 40px auto 0;
-  padding-left: 1.5em;
+  padding-left: 5em;
+  padding-right: 1em;
   padding-bottom: 0.2em;
   border-bottom: 1px solid #4d4b46; }
   .o-label__score.is-quiz:first-child {
     margin-top: 0; }
   .o-label__score.is-quiz::before {
     content: "合計点";
-    font-size: 2.6rem;
     position: absolute;
     bottom: 0.8em;
     left: 1em; }
   .o-label__score.is-quiz .o-label__score--item {
     width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+    align-items: flex-end;
     text-align: center;
+    padding-bottom: 0.5em;
     opacity: 0;
     -webkit-animation-name: scaleIn__totalScore;
     animation-name: scaleIn__totalScore;
@@ -4805,17 +4828,31 @@ label {
     animation-duration: 1s;
     -webkit-animation-timing-function: cubic-bezier(0.9, -0.01, 1, 0.35);
     animation-timing-function: cubic-bezier(0.9, -0.01, 1, 0.35); }
+  .o-label__score.is-quiz .o-label__score--label.is-score {
+    font-size: 10rem; }
+  .o-label__score.is-quiz .o-label__score--label.is-total {
+    font-size: 2.6rem;
+    margin-left: 0.2em; }
+  .o-label__score.is-quiz .o-label__score--label.is-notUnique {
+    font-size: 2.6rem;
+    margin-left: 0.2em; }
   @media screen and (max-width: 1024px) {
     .o-label__score.is-quiz {
-      min-width: 7em;
-      font-size: 6rem; }
-      .o-label__score.is-quiz::before {
-        font-size: 1.8rem; } }
+      font-size: 1.8rem; }
+      .o-label__score.is-quiz .o-label__score--label.is-score {
+        font-size: 6rem; }
+      .o-label__score.is-quiz .o-label__score--label.is-total {
+        font-size: 2rem; }
+      .o-label__score.is-quiz .o-label__score--label.is-notUnique {
+        font-size: 2rem; } }
   @media screen and (max-width: 540px) {
     .o-label__score.is-quiz {
-      min-width: 7em;
-      font-size: 4rem; }
-      .o-label__score.is-quiz::before {
+      font-size: 1.4rem; }
+      .o-label__score.is-quiz .o-label__score--label.is-score {
+        font-size: 4rem; }
+      .o-label__score.is-quiz .o-label__score--label.is-total {
+        font-size: 1.6rem; }
+      .o-label__score.is-quiz .o-label__score--label.is-notUnique {
         font-size: 1.6rem; } }
 
 @-webkit-keyframes scaleIn__totalScore {
@@ -5515,6 +5552,8 @@ label {
         -webkit-box-sizing: border-box;
         box-sizing: border-box; }
   .o-list__score.is-quiz {
+    width: 100%;
+    max-width: 720px;
     margin: 0 auto; }
     .o-list__score.is-quiz .o-list__score--unit {
       position: relative;
