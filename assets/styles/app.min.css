@@ -228,7 +228,7 @@
     background-image: url(/nankyoku/assets/images/youtube_white.svg); }
 
 .i-scale.is-carousel {
-  background-image: url(/assets/images/icons.a5c12041b9a2756b8d49c7ee9421ca60.png);
+  background-image: url(/assets/images/icons.2899c29397fed1cd0a3aeab74c327330.png);
   background-position: 0px 0px;
   width: 48px;
   height: 48px;
@@ -3712,7 +3712,7 @@ label {
           display: none; }
   .o-action__quiz.is-start, .o-action__quiz.is-next {
     text-align: center;
-    margin-top: 120px; }
+    margin-top: 60px; }
     .o-action__quiz.is-start:first-child, .o-action__quiz.is-next:first-child {
       margin-top: 0; }
     .o-action__quiz.is-start .o-action__quiz--item, .o-action__quiz.is-next .o-action__quiz--item {
