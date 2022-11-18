@@ -356,7 +356,6 @@ dash {
         <!-- /.l-rows__hero --></div>
       <!-- /.f-section__hero body --></div>
     <!-- /.f-section__hero --></section>
-
     <Modal
       header-message="クイズ事前登録"
       :enable-backdrop="false"
@@ -366,7 +365,7 @@ dash {
       ]"
       :is-show.sync="isShowModal">
       
-      <template slot="action" v-if="isEnteredName && !isOverWrite">
+      <template slot="action" v-if="!isWritable">
         <p class="p">
           登録済み情報は以下です。<br>
           このままクイズを実施する場合は「このまま」ボタンを押してください。
@@ -416,7 +415,7 @@ dash {
       </template>
 
       
-      <template slot="action" v-if="!isEnteredName || isOverWrite">
+      <template slot="action" v-if="isWritable">
         <dl class="dl">
           <dt class="dt u-text__bold">
             FF のキャラクター名
@@ -447,7 +446,9 @@ dash {
         </dl>
 
         <div class="o-action is-lite">
-          <button class="o-action--item" @click.prevent="settingProfile">
+          <button
+            class="o-action--item"
+            @click.prevent.once="settingProfile">
             設定
           </button>
         <!-- /.o-action --></div>
@@ -505,6 +506,9 @@ dash {
 <!-- /.f-section__footer --></section>
 
     </footer>
+
+    <!-- 処理中アニメーション -->
+    <processing-animation></processing-animation>
 
     <navigation-drawer></navigation-drawer>
 

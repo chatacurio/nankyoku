@@ -388,31 +388,45 @@ dash {
             <li class="o-list__rule--item">START を押すと自動でテストが開始されます。</li>
             <li class="o-list__rule--item">出題教科は国語、算数、理科、社会、英語、時事・一般常識の 6 教科です。</li>
             <li class="o-list__rule--item">1 教科あたり 5 問出題されます。</li>
-            <li class="o-list__rule--item">各問には制限時間があり、10秒ほど経過すると自動で次の問題へ移ります。<br>
+            <li class="o-list__rule--item">各問には制限時間があり、その制限時間を経過すると自動で次の問題へ移ります。<br>
             （前の問題に戻ることはできません。）</li>
+            <li class="o-list__rule--item" v-if="hasName">全問回答後、スコアが表示されます。合計点数掲載後、<strong class="strong">「現在処理中です」の画面が表示されている間は、今表示しているタブをアクティブにした状態で待機してください（他のアプリケーションを触らないでください）。</strong></li>
           </ul>
         <!-- /.o-list__rule --></div>
 
-        <div class="o-action__quiz is-start">
-          <button class="o-action__quiz--item" @click.prevent="startQuiz">
+        <div class="o-label__name is-quiz" v-if="hasName">
+          <dl class="o-label__name--unit">
+            <dt class="o-label__name--term">登録名</dt>
+            <dd class="o-label__name--description">
+              {{ PROFILE.NICK_NAME }}
+            </dd>
+          </dl>
+        </div>
+
+        <div class="o-action__quiz is-start" v-if="phase < QUIZ_PHASE.STARTED">
+          <button
+            class="o-action__quiz--item"
+            @click.prevent.once="startQuiz"
+            :disabled="phase >= QUIZ_PHASE.STARTED">
             START
           </button>
         <!-- /.o-action__quiz --></div>
       <!-- /.f-section__quiz --></div>
     <!-- /.f-section__quiz --></section>
 
-    <template v-for="(section, sectionIndex) in quiz">
+    
+    <template v-for="(category, categoryIndex) in quiz">
       <section
-        :id="`section-${sectionIndex + 1}`"
+        :id="`section-${categoryIndex + 1}`"
         class="f-section__quiz is-timer is-fill__brown"
-        v-if="current.sectionIndex === sectionIndex">
+        v-if="current.categoryIndex === categoryIndex">
         <div class="f-section__quiz--body">
-          <template v-for="(item, questionIndex) in section.items">
+          <template v-for="(item, questionIndex) in category.items">
             <div class="l-unit__quiz" v-if="current.questionIndex === questionIndex">
               <div class="l-unit__quiz--header">
                 <div class="o-heading__section is-quiz">
                   <h2 class="o-heading__section--item">
-                    {{ section.title }}
+                    {{ category.title }}
                   </h2>
                 <!-- /.o-heading__section --></div>
               <!-- /.l-unit__quiz header --></div>
@@ -424,7 +438,7 @@ dash {
                 <img
                   class="img is-lazyload u-device__cursorPointer"
                   :src="`${$GLOBAL_NAME.IMAGES.DIRECTORY}${$GLOBAL_NAME.IMAGES.LOADING_IMAGE_FILE}`"
-                  :data-src="`${$GLOBAL_NAME.IMAGES.DIRECTORY}${item.image}`"
+                  :data-src="`${$GLOBAL_NAME.IMAGES.DIRECTORY}quiz/${item.image}`"
                   data-is-liquid="true"
                   alt=""
                   @click.prevent="showModal">
@@ -433,7 +447,7 @@ dash {
               <div class="l-unit__quiz--description">
                 <div class="o-heading__quiz">
                   <h3 class="o-heading__quiz--item">
-                    <span class="o-heading__quiz--label is-index">問{{ questionIndex + 1 }}.</span>{{ item.title }}
+                    <span class="o-heading__quiz--label is-index">問{{ questionIndex + 1 }}.</span><span class="o-heading__quiz--label is-title" v-html="getTitleAsRenderText(item.title)"></span>
                   </h3>
                 <!-- /.o-heading__quiz --></div>
 
@@ -441,7 +455,7 @@ dash {
                   <div
                     :class="[
                       'o-list__quiz',
-                      `is-col${item.col}`
+                      `is-col${item.cols || 1}`
                     ]">
                     <ul class="o-list__quiz--items">
                       <li
@@ -472,8 +486,10 @@ dash {
                   <div
                     :class="[
                       'o-input__quiz',
-                      getStyleClassByAnswerType(item.type)
-                    ]">
+                      getStyleClassByAnswerType(item.type),
+                      { 'is-suffix': item.suffix },
+                    ]"
+                    :data-suffix="item.suffix">
                     <template v-if="item.type === ANSWER_TYPE.TEXT">
                       <input
                         class="o-input__quiz--item"
@@ -496,9 +512,12 @@ dash {
                 </template>
               <!-- /.l-unit__quiz description --></div>
 
-              <div class="l-unit__quiz--action">
+              <div class="l-unit__quiz--action" v-if="item.hasNext">
                 <div class="o-action__quiz is-next">
-                  <button class="o-action__quiz--item" @click.prevent="next">
+                  <button
+                    class="o-action__quiz--item"
+                    @click.prevent="next"
+                    :disabled="!item.hasNext">
                     次へ
                   </button>
                 <!-- /.o-action__quiz --></div>
@@ -530,7 +549,7 @@ dash {
               <img
                 class="img is-lazyload"
                 :src="`${$GLOBAL_NAME.IMAGES.DIRECTORY}${$GLOBAL_NAME.IMAGES.LOADING_IMAGE_FILE}`"
-                :data-src="`${$GLOBAL_NAME.IMAGES.DIRECTORY}${quiz[current.sectionIndex].items[current.questionIndex].image}`"
+                :data-src="`${$GLOBAL_NAME.IMAGES.DIRECTORY}quiz/${quiz[current.categoryIndex].items[current.questionIndex].image}`"
                 data-is-liquid="true"
                 alt="">
             </template>
@@ -550,6 +569,7 @@ dash {
       <!-- /.f-section__quiz --></section>
     </template>
 
+    
     <section
       id="section-score"
       class="f-section__quiz is-fill__lightBrown"
@@ -562,34 +582,35 @@ dash {
         <!-- /.o-heading__section --></div>
 
         <section
-          :id="`section-score-${sectionIndex}`"
+          :id="`section-score-category-${categoryIndex}`"
           :class="[
             'f-section__quiz',
             'is-score',
-            section.isShowScore ? 'is-active' : 'is-hide',
+            category.isShowScore ? 'is-active' : 'is-hide',
           ]"
-          v-for="(section, sectionIndex) in quiz"
-          :key="sectionIndex">
+          v-for="(category, categoryIndex) in quiz"
+          :key="categoryIndex">
           <div class="f-section__quiz--body">
             <div class="o-heading__part is-quiz">
               <h3 class="o-heading__part--item u-text__center">
-                {{ section.title }}
+                {{ category.title }}
               </h3>
             <!-- /.o-heading__part --></div>
 
             <div class="o-list__score is-quiz">
               
               <dl
+                :id="`section-score-category-${categoryIndex}-question-${questionIndex}`"
                 :class="[
                   'o-list__score--unit',
                   { 'is-active': item.score.isShow },
                   { 'is-correct': item.score.isCorrect === true },
                   { 'is-incorrect': item.score.isCorrect === false },
                 ]"
-                v-for="(item, questionIndex) in section.items"
+                v-for="(item, questionIndex) in category.items"
                 :key="questionIndex">
                 <dt class="o-list__score--term">
-                  問{{ questionIndex + 1 }}. {{ item.title }}
+                  <span class="o-list__score--label is-index">問{{ questionIndex + 1 }}.</span><span class="o-list__score--label is-title" v-html="getTitleAsRenderText(item.title)"></span>
                 </dt>
                 <dd class="o-list__score--description">
                   <div class="l-cols__quiz">
@@ -597,17 +618,17 @@ dash {
                       <img
                         class="img is-lazyload"
                         :src="`${$GLOBAL_NAME.IMAGES.DIRECTORY}${$GLOBAL_NAME.IMAGES.LOADING_IMAGE_FILE}`"
-                        :data-src="`${$GLOBAL_NAME.IMAGES.DIRECTORY}${item.image}`"
+                        :data-src="`${$GLOBAL_NAME.IMAGES.DIRECTORY}quiz/${item.image}`"
                         data-is-liquid="true"
                         alt="">
                     <!-- /.l-cols__quiz col --></div>
 
                     <div class="l-cols__quiz--col is-description">
-                      <p class="p" v-html="getAnswerAsRenderText(item.value)"></p>
+                      <p class="p" v-html="getAnswerAsRenderText(item.value, item.type)"></p>
                     <!-- /.l-cols__quiz col --></div>
 
                     <div class="l-cols__quiz--col is-answer" v-if="item.answer">
-                      <p class="p" v-html="getAnswerAsRenderText(item.answer)"></p>
+                      <p class="p" v-html="getAnswerAsRenderText(item.answer, item.type)"></p>
                     <!-- /.l-cols__quiz col --></div>
 
                     <div class="l-cols__quiz--col is-modelAnswer" v-if="item.modelAnswer">
@@ -695,6 +716,9 @@ dash {
 <!-- /.f-section__footer --></section>
 
     </footer>
+
+    <!-- 処理中アニメーション -->
+    <processing-animation></processing-animation>
 
     <navigation-drawer></navigation-drawer>
 
