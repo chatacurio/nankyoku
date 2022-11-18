@@ -228,7 +228,7 @@
     background-image: url(/nankyoku/assets/images/youtube_white.svg); }
 
 .i-scale.is-carousel {
-  background-image: url(/assets/images/icons.c8cea808aaf6bfecb243d811491bf50b.png);
+  background-image: url(/assets/images/icons.0f63645eff3b76acdbbc4548b7855824.png);
   background-position: 0px 0px;
   width: 48px;
   height: 48px;
@@ -3143,6 +3143,7 @@ label {
       -webkit-filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.7));
       filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.7)); }
     .l-unit__quiz .l-unit__quiz--description {
+      width: 100%;
       -webkit-box-flex: 1;
       -ms-flex: 1;
       flex: 1;
@@ -4594,8 +4595,7 @@ label {
     border-bottom: 4px solid #0f0f0f; }
 
 .o-input__quiz.is-text::after {
-  content: attr(data-suffix);
-  margin-left: 1em; }
+  content: attr(data-suffix); }
 
 .o-input__quiz.is-textarea .o-input__quiz--item {
   -webkit-box-flex: 1;
@@ -5649,6 +5649,9 @@ label {
         border-radius: 50%;
         -webkit-box-sizing: border-box;
         box-sizing: border-box; }
+    @media screen and (max-width: 540px) {
+      .o-list__rule.is-quiz {
+        padding: 1.5em; } }
   .o-list__score.is-quiz {
     width: 100%;
     max-width: 720px;
