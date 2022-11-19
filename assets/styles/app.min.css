@@ -228,7 +228,7 @@
     background-image: url(/nankyoku/assets/images/youtube_white.svg); }
 
 .i-scale.is-carousel {
-  background-image: url(/assets/images/icons.2899c29397fed1cd0a3aeab74c327330.png);
+  background-image: url(/assets/images/icons.4d8a2a9aec93ecea1cec551e46259753.png);
   background-position: 0px 0px;
   width: 48px;
   height: 48px;
@@ -1118,6 +1118,9 @@ label {
    * オーバーレイコンテンツ用下地
    */
   /**
+   * デバッグ用
+   */
+  /**
    * グローバルナビゲーション用
    */ }
   .f-section .f-section--body {
@@ -1337,6 +1340,19 @@ label {
       -webkit-box-direction: normal;
       -ms-flex-direction: column;
       flex-direction: column; }
+  .f-section__debug {
+    width: 20vw;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 20; }
+    .f-section__debug .f-section__debug--body {
+      height: 100%;
+      overflow-y: scroll;
+      font-family: sans-serif;
+      padding: 20px; }
   .f-section__loading {
     background-color: transparent; }
     .f-section__loading:not([v-cloak]) {

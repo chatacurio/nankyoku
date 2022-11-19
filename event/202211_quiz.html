@@ -665,6 +665,47 @@ dash {
         </share-services>
       <!-- /.f-section__quiz body --></div>
     <!-- /.f-section__quiz --></section>
+
+    
+    <section class="f-section__debug">
+      <div class="f-section__debug--body">
+        <div
+          class="l-rows">
+          <div class="l-rows--row" v-for="(category, categoryIndex) in quiz">
+            <h2 class="h2"><span class="span u-text__small">{{ category.title }}</span></h2>
+            <dl class="dl" v-for="(item, questionIndex) in category.items">
+              <dt class="dt">
+                問{{ questionIndex + 1 }}.
+                <span class="span" v-html="getTitleAsRenderText(item.title)"></span>
+              </dt>
+              <dd class="dd">
+                <p class="p" v-if="item.image">
+                  <img
+                    class="img is-lazyload"
+                    :src="`${$GLOBAL_NAME.IMAGES.DIRECTORY}${$GLOBAL_NAME.IMAGES.LOADING_IMAGE_FILE}`"
+                    :data-src="`${$GLOBAL_NAME.IMAGES.DIRECTORY}quiz/${item.image}`"
+                    data-is-liquid="true"
+                    alt="">
+                </p>
+
+                <div class="l-unit is-box">
+                  <div class="l-unit--description">
+                    <p
+                      class="p"
+                      v-html="getAnswerAsRenderText(item.answer, item.type)"
+                      v-if="item.answer"></p>
+                    <p
+                      class="p"
+                      v-html="getModelAnswerAsRenderText(item.modelAnswer)"
+                      v-if="item.modelAnswer"></p>
+                  <!-- /.l-unit description --></div>
+                <!-- /.l-unit --></div>
+              </dd>
+            </dl>
+          <!-- /.l-rows row --></div>
+        <!-- /.l-rows --></div>
+      <!-- /.f-section__debug body --></div>
+    <!-- /.f-section__debug --></section>
   <!-- /.f-article body --></div>
 <!-- /.f-article --></article>
 
