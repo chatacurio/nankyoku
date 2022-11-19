@@ -386,8 +386,7 @@ dash {
         <div class="o-list__rule is-quiz">
           <ul class="o-list__rule--items">
             <li class="o-list__rule--item">START を押すと自動でテストが開始されます。</li>
-            <li class="o-list__rule--item">出題教科は国語、算数、理科、社会、英語、時事・一般常識の 6 教科です。</li>
-            <li class="o-list__rule--item">1 教科あたり 5 問出題されます。</li>
+            <li class="o-list__rule--item">出題教科は{{ categoriesTextInRule }}の {{ this.quiz.length }} 教科です。</li>
             <li class="o-list__rule--item">各問には制限時間があり、その制限時間を経過すると自動で次の問題へ移ります。<br>
             （前の問題に戻ることはできません。）</li>
             <li class="o-list__rule--item" v-if="hasName">全問回答後、スコアが表示されます。合計点数掲載後、<strong class="strong">「現在処理中です」の画面が表示されている間は、今表示しているタブをアクティブにした状態で待機してください（他のアプリケーションを触らないでください）。</strong></li>
