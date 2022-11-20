@@ -672,7 +672,10 @@ dash {
           class="l-rows">
           <div class="l-rows--row" v-for="(category, categoryIndex) in quiz">
             <h2 class="h2"><span class="span u-text__small">{{ category.title }}</span></h2>
-            <dl class="dl" v-for="(item, questionIndex) in category.items">
+            <dl
+              class="dl"
+              v-for="(item, questionIndex) in category.items"
+              :key="item.title">
               <dt class="dt">
                 問{{ questionIndex + 1 }}.
                 <span class="span" v-html="getTitleAsRenderText(item.title)"></span>
@@ -687,18 +690,45 @@ dash {
                     alt="">
                 </p>
 
-                <div class="l-unit is-box">
+                <div class="l-unit is-box" v-if="item.selector.length">
                   <div class="l-unit--description">
-                    <p
-                      class="p"
-                      v-html="getAnswerAsRenderText(item.answer, item.type)"
-                      v-if="item.answer"></p>
-                    <p
-                      class="p"
-                      v-html="getModelAnswerAsRenderText(item.modelAnswer)"
-                      v-if="item.modelAnswer"></p>
+                    <dl class="dl">
+                      <dt class="dt">選択肢</dt>
+                      <dd class="dd">
+                        <div class="o-list is-circle">
+                          <ul class="o-list--items">
+                            <li
+                              class="o-list--item"
+                              v-for="select in item.selector"
+                              :key="select.value">
+                              {{ select.label }}
+                            </li>
+                          </ul>
+                        <!-- /.o-list --></div>
+                      </dd>
+                    </dl>
                   <!-- /.l-unit description --></div>
                 <!-- /.l-unit --></div>
+
+                <div class="l-unit is-box">
+                  <div class="l-unit--description">
+                    <dl class="dl">
+                      <dt class="dt">正解</dt>
+                      <dd class="dd">
+                        <p
+                          class="p"
+                          v-html="getAnswerAsRenderText(item.answer, item.type)"
+                          v-if="item.answer"></p>
+                        <p
+                          class="p"
+                          v-html="getModelAnswerAsRenderText(item.modelAnswer)"
+                          v-if="item.modelAnswer"></p>
+                      </dd>
+                    </dl>
+                  <!-- /.l-unit description --></div>
+                <!-- /.l-unit --></div>
+
+                <hr class="hr" v-if="questionIndex < (category.items.length - 1)">
               </dd>
             </dl>
           <!-- /.l-rows row --></div>
