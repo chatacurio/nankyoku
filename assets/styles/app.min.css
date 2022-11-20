@@ -228,7 +228,7 @@
     background-image: url(/nankyoku/assets/images/youtube_white.svg); }
 
 .i-scale.is-carousel {
-  background-image: url(/assets/images/icons.5828cd05b9d48033808258f9c98310cd.png);
+  background-image: url(/assets/images/icons.459d351e21fb0063bd1832e17f01c1d4.png);
   background-position: 0px 0px;
   width: 48px;
   height: 48px;
@@ -1353,11 +1353,6 @@ label {
       overflow-y: scroll;
       font-family: sans-serif;
       padding: 20px; }
-  .f-section__loading {
-    background-color: transparent; }
-    .f-section__loading:not([v-cloak]) {
-      -webkit-animation: none 0 ease forwards;
-      animation: none 0 ease forwards; }
   .f-section__hero {
     position: relative; }
     .f-section__hero .f-section__hero--body {
