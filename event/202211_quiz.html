@@ -597,14 +597,12 @@ dash {
             <!-- /.o-heading__part --></div>
 
             <div class="o-list__score is-quiz">
-              
               <dl
                 :id="`section-score-category-${categoryIndex}-question-${questionIndex}`"
                 :class="[
                   'o-list__score--unit',
                   { 'is-active': item.score.isShow },
-                  { 'is-correct': item.score.isCorrect === true },
-                  { 'is-incorrect': item.score.isCorrect === false },
+                  getStyleClassByScore(item.score.value),
                 ]"
                 v-for="(item, questionIndex) in category.items"
                 :key="questionIndex">
@@ -650,7 +648,7 @@ dash {
               / {{ totalQuestionsAsCorrect }} 問中
             </span>
             <span class="o-label__score--label is-notUnique" v-if="totalNotUniqueQuestions">
-              ( + 採点外 {{ totalNotUniqueQuestions }} 問)
+              ( + 採点対象外 {{ totalNotUniqueQuestions }} 問)
             </span>
           </p>
         <!-- /.o-label__score --></div>
