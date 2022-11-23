@@ -228,7 +228,7 @@
     background-image: url(/nankyoku/assets/images/youtube_white.svg); }
 
 .i-scale.is-carousel {
-  background-image: url(/assets/images/icons.3bc2af5d666e18f40aa8eb7d3c75c0b1.png);
+  background-image: url(/assets/images/icons.7639c359841f44cbd70cd4030939597c.png);
   background-position: 0px 0px;
   width: 48px;
   height: 48px;
@@ -2227,6 +2227,7 @@ label {
       -webkit-filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.7));
       filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.7)); }
     .l-cols__quiz .l-cols__quiz--col.is-description {
+      width: 100%;
       -webkit-box-flex: 1;
       -ms-flex: 1;
       flex: 1;
@@ -2369,6 +2370,21 @@ label {
       animation-fill-mode: forwards;
       -webkit-animation-duration: 2s;
       animation-duration: 2s;
+      -webkit-animation-timing-function: ease;
+      animation-timing-function: ease; }
+    .l-rows__hero.is-quiz .l-rows__hero--row.is-category {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      -webkit-animation-name: fadeIn__quizCategory;
+      animation-name: fadeIn__quizCategory;
+      -webkit-animation-fill-mode: forwards;
+      animation-fill-mode: forwards;
+      -webkit-animation-duration: 4s;
+      animation-duration: 4s;
       -webkit-animation-timing-function: ease;
       animation-timing-function: ease; }
     .l-rows__hero.is-quiz .l-rows__hero--row.is-caption {
@@ -2523,6 +2539,58 @@ label {
     opacity: 1; }
   100% {
     opacity: 1; } }
+
+@-webkit-keyframes fadeIn__quizCategory {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate(200px, -50%);
+    transform: translate(200px, -50%);
+    -webkit-filter: blur(10px);
+    filter: blur(10px); }
+  50% {
+    opacity: 0;
+    -webkit-transform: translate(200px, -50%);
+    transform: translate(200px, -50%);
+    -webkit-filter: blur(10px);
+    filter: blur(10px); }
+  80% {
+    opacity: 1;
+    -webkit-transform: translate(280px, -50%);
+    transform: translate(280px, -50%);
+    -webkit-filter: blur(0);
+    filter: blur(0); }
+  100% {
+    opacity: 1;
+    -webkit-transform: translate(280px, -50%);
+    transform: translate(280px, -50%);
+    -webkit-filter: blur(0);
+    filter: blur(0); } }
+
+@keyframes fadeIn__quizCategory {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate(200px, -50%);
+    transform: translate(200px, -50%);
+    -webkit-filter: blur(10px);
+    filter: blur(10px); }
+  50% {
+    opacity: 0;
+    -webkit-transform: translate(200px, -50%);
+    transform: translate(200px, -50%);
+    -webkit-filter: blur(10px);
+    filter: blur(10px); }
+  80% {
+    opacity: 1;
+    -webkit-transform: translate(280px, -50%);
+    transform: translate(280px, -50%);
+    -webkit-filter: blur(0);
+    filter: blur(0); }
+  100% {
+    opacity: 1;
+    -webkit-transform: translate(280px, -50%);
+    transform: translate(280px, -50%);
+    -webkit-filter: blur(0);
+    filter: blur(0); } }
   .l-rows__share.is-global .l-rows__share--row {
     margin-top: 10px; }
     .l-rows__share.is-global .l-rows__share--row:first-child {
@@ -4788,6 +4856,12 @@ label {
     .o-label__category.is-information .o-label__category--item {
       font-size: 1rem; } }
 
+.o-label__category.is-quiz .o-label__category--item {
+  color: #fff;
+  font-size: 2.6rem;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 900; }
+
 .o-label__copyright {
   margin-top: 30px; }
   .o-label__copyright:first-child {
@@ -4922,6 +4996,8 @@ label {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
     -webkit-box-align: end;
     -ms-flex-align: end;
     align-items: flex-end;
@@ -4957,11 +5033,11 @@ label {
     .o-label__score.is-quiz {
       font-size: 1.4rem; }
       .o-label__score.is-quiz .o-label__score--label.is-score {
-        font-size: 4rem; }
+        font-size: 2.6rem; }
       .o-label__score.is-quiz .o-label__score--label.is-total {
-        font-size: 1.6rem; }
+        font-size: 1.4rem; }
       .o-label__score.is-quiz .o-label__score--label.is-notUnique {
-        font-size: 1.6rem; } }
+        font-size: 1.4rem; } }
 
 @-webkit-keyframes scaleIn__totalScore {
   0% {

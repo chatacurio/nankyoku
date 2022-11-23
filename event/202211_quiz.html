@@ -350,6 +350,14 @@ dash {
             <!-- /.o-heading__page --></div>
           <!-- /.l-rows__hero row --></div>
 
+          <div class="l-rows__hero--row is-category">
+            <div class="o-label__category is-quiz">
+              <h1 class="o-label__category--item">
+                {{ quiz.title }}編
+              </h1>
+            <!-- /.o-label__category --></div>
+          <!-- /.l-rows__hero row --></div>
+
           <div class="l-rows__hero--row is-caption">
             <div class="o-label__slogan is-quiz">
               <p class="o-label__slogan--item">
@@ -385,8 +393,20 @@ dash {
 
         <div class="o-list__rule is-quiz">
           <ul class="o-list__rule--items">
+            <li class="o-list__rule--item">この問題は <em class="em">{{ quiz.title }}編</em> です。他の問題を行う場合はこちらから遷移してください。<br>
+              <div class="o-list is-triangle">
+                <ul class="o-list--items">
+                  <li class="o-list--item">
+                    <a class="a" href="/nankyoku/event/202211_quiz.html">FF XIV編</a>
+                  </li>
+                  <li class="o-list--item">
+                    <a class="a" href="/nankyoku/event/202211_quiz.html?category=quiz_education_202211">義務教育編</a>
+                  </li>
+                </ul>
+              <!-- /.o-list --></div>
+            </li>
             <li class="o-list__rule--item">START を押すと自動でテストが開始されます。</li>
-            <li class="o-list__rule--item">出題教科は{{ categoriesTextInRule }}の {{ this.quiz.length }} 教科です。</li>
+            <li class="o-list__rule--item">出題教科は{{ categoriesTextInRule }}の {{ this.quiz.categories.length }} 教科です。</li>
             <li class="o-list__rule--item">各問には制限時間があり、その制限時間を経過すると自動で次の問題へ移ります。<br>
             （前の問題に戻ることはできません。）</li>
             <li class="o-list__rule--item" v-if="hasName">全問回答後、スコアが表示されます。合計点数掲載後、<strong class="strong">「現在処理中です」の画面が表示されている間は、今表示しているタブをアクティブにした状態で待機してください（他のアプリケーションを触らないでください）。</strong></li>
@@ -414,13 +434,13 @@ dash {
     <!-- /.f-section__quiz --></section>
 
     
-    <template v-for="(category, categoryIndex) in quiz">
+    <template v-for="(category, categoryIndex) in quiz.categories">
       <section
         :id="`section-${categoryIndex + 1}`"
         class="f-section__quiz is-timer is-fill__brown"
         v-if="current.categoryIndex === categoryIndex">
         <div class="f-section__quiz--body">
-          <template v-for="(item, questionIndex) in category.items">
+          <template v-for="(question, questionIndex) in category.questions">
             <div class="l-unit__quiz" v-if="current.questionIndex === questionIndex">
               <div class="l-unit__quiz--header">
                 <div class="o-heading__section is-quiz">
@@ -433,11 +453,11 @@ dash {
               <div
                 class="l-unit__quiz--image u-link__tooltip"
                 data-tooltip="クリックで拡大表示"
-                v-if="item.image">
+                v-if="question.image">
                 <img
                   class="img is-lazyload u-device__cursorPointer"
                   :src="`${$GLOBAL_NAME.IMAGES.DIRECTORY}${$GLOBAL_NAME.IMAGES.LOADING_IMAGE_FILE}`"
-                  :data-src="`${$GLOBAL_NAME.IMAGES.DIRECTORY}quiz/${item.image}`"
+                  :data-src="`${$GLOBAL_NAME.IMAGES.DIRECTORY}quiz/${question.image}`"
                   data-is-liquid="true"
                   alt=""
                   @click.prevent="showModal">
@@ -446,33 +466,33 @@ dash {
               <div class="l-unit__quiz--description">
                 <div class="o-heading__quiz">
                   <h3 class="o-heading__quiz--item">
-                    <span class="o-heading__quiz--label is-index">問{{ questionIndex + 1 }}.</span><span class="o-heading__quiz--label is-title" v-html="getTitleAsRenderText(item.title)"></span>
+                    <span class="o-heading__quiz--label is-index">問{{ questionIndex + 1 }}.</span><span class="o-heading__quiz--label is-title" v-html="getTitleAsRenderText(question.title)"></span>
                   </h3>
                 <!-- /.o-heading__quiz --></div>
 
-                <template v-if="item.selector.length">
+                <template v-if="question.selector.length">
                   <div
                     :class="[
                       'o-list__quiz',
-                      `is-col${item.cols || 1}`
+                      `is-col${question.cols || 1}`
                     ]">
                     <ul class="o-list__quiz--items">
                       <li
                         class="o-list__quiz--item"
-                        v-for="selector in item.selector"
+                        v-for="selector in question.selector"
                         :key="selector.value">
                         <div
                           :class="[
                             'o-input__quiz',
-                            getStyleClassByAnswerType(item.type),
-                            { 'is-active': isCheckedSelector(item.type, selector.value, item.value) },
+                            getStyleClassByAnswerType(question.type),
+                            { 'is-active': isCheckedSelector(question.type, selector.value, question.value) },
                           ]">
                           <label class="o-input__quiz--label">
                             <input
                               class="o-input__quiz--item"
-                              :type="item.type"
+                              :type="question.type"
                               :value="selector.value"
-                              v-model="item.value"
+                              v-model="question.value"
                               :disabled="phase >= QUIZ_PHASE.DONE">
                             {{ selector.label }}
                           </label>
@@ -485,25 +505,25 @@ dash {
                   <div
                     :class="[
                       'o-input__quiz',
-                      getStyleClassByAnswerType(item.type),
-                      { 'is-suffix': item.suffix },
+                      getStyleClassByAnswerType(question.type),
+                      { 'is-suffix': question.suffix },
                     ]"
-                    :data-suffix="item.suffix">
-                    <template v-if="item.type === ANSWER_TYPE.TEXT">
+                    :data-suffix="question.suffix">
+                    <template v-if="question.type === ANSWER_TYPE.TEXT">
                       <input
                         class="o-input__quiz--item"
                         type="text"
                         placeholder="ここに入力してください"
-                        v-model="item.value"
+                        v-model="question.value"
                         :disabled="phase >= QUIZ_PHASE.DONE">
                     </template>
-                    <template v-if="item.type === ANSWER_TYPE.TEXTAREA">
+                    <template v-if="question.type === ANSWER_TYPE.TEXTAREA">
                       <textarea
                         class="o-input__quiz--item"
                         cols="30"
                         rows="5"
                         placeholder="ここに入力してください"
-                        v-model="item.value"
+                        v-model="question.value"
                         :disabled="phase >= QUIZ_PHASE.DONE">
                       </textarea>
                     </template>
@@ -511,12 +531,12 @@ dash {
                 </template>
               <!-- /.l-unit__quiz description --></div>
 
-              <div class="l-unit__quiz--action" v-if="item.hasNext">
+              <div class="l-unit__quiz--action" v-if="question.hasNext">
                 <div class="o-action__quiz is-next">
                   <button
                     class="o-action__quiz--item"
                     @click.prevent="next"
-                    :disabled="!item.hasNext">
+                    :disabled="!question.hasNext">
                     次へ
                   </button>
                 <!-- /.o-action__quiz --></div>
@@ -526,15 +546,15 @@ dash {
                 :class="[
                   'l-unit__quiz--footer',
                   'is-timer',
-                  { 'is-hide': !item.timer.value },
+                  { 'is-hide': !question.timer.value },
                 ]">
                 <div class="o-label__timer is-quiz">
                   <p
                     class="o-label__timer--item"
                     :style="{
-                      backgroundImage: `radial-gradient(#99968d 55%, transparent 56%), conic-gradient(transparent 0% ${getTimerMeter(item.timer.value)}%, #4d4b46 ${getTimerMeter(item.timer.value)}% 100%)`
+                      backgroundImage: `radial-gradient(#99968d 55%, transparent 56%), conic-gradient(transparent 0% ${getTimerMeter(question.timer.value)}%, #4d4b46 ${getTimerMeter(question.timer.value)}% 100%)`
                     }">
-                    {{ item.timer.value }}
+                    {{ question.timer.value }}
                   </p>
                 <!-- /.o-label__timer --></div>
               <!-- /.l-unit__quiz footer --></div>
@@ -548,7 +568,7 @@ dash {
               <img
                 class="img is-lazyload"
                 :src="`${$GLOBAL_NAME.IMAGES.DIRECTORY}${$GLOBAL_NAME.IMAGES.LOADING_IMAGE_FILE}`"
-                :data-src="`${$GLOBAL_NAME.IMAGES.DIRECTORY}quiz/${quiz[current.categoryIndex].items[current.questionIndex].image}`"
+                :data-src="`${$GLOBAL_NAME.IMAGES.DIRECTORY}quiz/${quiz.categories[current.categoryIndex].questions[current.questionIndex].image}`"
                 data-is-liquid="true"
                 alt="">
             </template>
@@ -587,7 +607,7 @@ dash {
             'is-score',
             category.isShowScore ? 'is-active' : 'is-hide',
           ]"
-          v-for="(category, categoryIndex) in quiz"
+          v-for="(category, categoryIndex) in quiz.categories"
           :key="categoryIndex">
           <div class="f-section__quiz--body">
             <div class="o-heading__part is-quiz">
@@ -601,35 +621,35 @@ dash {
                 :id="`section-score-category-${categoryIndex}-question-${questionIndex}`"
                 :class="[
                   'o-list__score--unit',
-                  { 'is-active': item.score.isShow },
-                  getStyleClassByScore(item.score.value),
+                  { 'is-active': question.score.isShow },
+                  getStyleClassByScore(question.score.value),
                 ]"
-                v-for="(item, questionIndex) in category.items"
+                v-for="(question, questionIndex) in category.questions"
                 :key="questionIndex">
                 <dt class="o-list__score--term">
-                  <span class="o-list__score--label is-index">問{{ questionIndex + 1 }}.</span><span class="o-list__score--label is-title" v-html="getTitleAsRenderText(item.title)"></span>
+                  <span class="o-list__score--label is-index">問{{ questionIndex + 1 }}.</span><span class="o-list__score--label is-title" v-html="getTitleAsRenderText(question.title)"></span>
                 </dt>
                 <dd class="o-list__score--description">
                   <div class="l-cols__quiz">
-                    <div class="l-cols__quiz--col is-image" v-if="item.image">
+                    <div class="l-cols__quiz--col is-image" v-if="question.image">
                       <img
                         class="img is-lazyload"
                         :src="`${$GLOBAL_NAME.IMAGES.DIRECTORY}${$GLOBAL_NAME.IMAGES.LOADING_IMAGE_FILE}`"
-                        :data-src="`${$GLOBAL_NAME.IMAGES.DIRECTORY}quiz/${item.image}`"
+                        :data-src="`${$GLOBAL_NAME.IMAGES.DIRECTORY}quiz/${question.image}`"
                         data-is-liquid="true"
                         alt="">
                     <!-- /.l-cols__quiz col --></div>
 
                     <div class="l-cols__quiz--col is-description">
-                      <p class="p" v-html="getAnswerAsRenderText(item.value, item.type)"></p>
+                      <p class="p" v-html="getAnswerAsRenderText(question.value, question.type)"></p>
                     <!-- /.l-cols__quiz col --></div>
 
-                    <div class="l-cols__quiz--col is-answer" v-if="item.answer">
-                      <p class="p" v-html="getAnswerAsRenderText(item.answer, item.type)"></p>
+                    <div class="l-cols__quiz--col is-answer" v-if="question.answer">
+                      <p class="p" v-html="getAnswerAsRenderText(question.answer, question.type)"></p>
                     <!-- /.l-cols__quiz col --></div>
 
-                    <div class="l-cols__quiz--col is-modelAnswer" v-if="item.modelAnswer">
-                      <p class="p" v-html="getModelAnswerAsRenderText(item.modelAnswer)"></p>
+                    <div class="l-cols__quiz--col is-modelAnswer" v-if="question.modelAnswer">
+                      <p class="p" v-html="getModelAnswerAsRenderText(question.modelAnswer)"></p>
                     <!-- /.l-cols__quiz col --></div>
                   <!-- /.l-cols__quiz --></div>
                 </dd>
@@ -642,7 +662,7 @@ dash {
         <div id="section-total-score" class="o-label__score is-quiz">
           <p class="o-label__score--item" v-if="phase >= QUIZ_PHASE.TOTAL_SCORE">
             <span class="o-label__score--label is-score">
-              {{ totalCorrect }} 点
+              {{ totalScore }} 点
             </span>
             <span class="o-label__score--label is-total">
               / {{ totalQuestionsAsCorrect }} 問中
@@ -668,27 +688,27 @@ dash {
       <div class="f-section__debug--body">
         <div
           class="l-rows">
-          <div class="l-rows--row" v-for="(category, categoryIndex) in quiz">
+          <div class="l-rows--row" v-for="(category, categoryIndex) in quiz.categories">
             <h2 class="h2"><span class="span u-text__small">{{ category.title }}</span></h2>
             <dl
               class="dl"
-              v-for="(item, questionIndex) in category.items"
-              :key="item.title">
+              v-for="(question, questionIndex) in category.questions"
+              :key="question.title">
               <dt class="dt">
                 問{{ questionIndex + 1 }}.
-                <span class="span" v-html="getTitleAsRenderText(item.title)"></span>
+                <span class="span" v-html="getTitleAsRenderText(question.title)"></span>
               </dt>
               <dd class="dd">
-                <p class="p" v-if="item.image">
+                <p class="p" v-if="question.image">
                   <img
                     class="img is-lazyload"
                     :src="`${$GLOBAL_NAME.IMAGES.DIRECTORY}${$GLOBAL_NAME.IMAGES.LOADING_IMAGE_FILE}`"
-                    :data-src="`${$GLOBAL_NAME.IMAGES.DIRECTORY}quiz/${item.image}`"
+                    :data-src="`${$GLOBAL_NAME.IMAGES.DIRECTORY}quiz/${question.image}`"
                     data-is-liquid="true"
                     alt="">
                 </p>
 
-                <div class="l-unit is-box" v-if="item.selector.length">
+                <div class="l-unit is-box" v-if="question.selector.length">
                   <div class="l-unit--description">
                     <dl class="dl">
                       <dt class="dt">選択肢</dt>
@@ -697,7 +717,7 @@ dash {
                           <ul class="o-list--items">
                             <li
                               class="o-list--item"
-                              v-for="select in item.selector"
+                              v-for="select in question.selector"
                               :key="select.value">
                               {{ select.label }}
                             </li>
@@ -715,18 +735,18 @@ dash {
                       <dd class="dd">
                         <p
                           class="p"
-                          v-html="getAnswerAsRenderText(item.answer, item.type)"
-                          v-if="item.answer"></p>
+                          v-html="getAnswerAsRenderText(question.answer, question.type)"
+                          v-if="question.answer"></p>
                         <p
                           class="p"
-                          v-html="getModelAnswerAsRenderText(item.modelAnswer)"
-                          v-if="item.modelAnswer"></p>
+                          v-html="getModelAnswerAsRenderText(question.modelAnswer)"
+                          v-if="question.modelAnswer"></p>
                       </dd>
                     </dl>
                   <!-- /.l-unit description --></div>
                 <!-- /.l-unit --></div>
 
-                <hr class="hr" v-if="questionIndex < (category.items.length - 1)">
+                <hr class="hr" v-if="questionIndex < (category.questions.length - 1)">
               </dd>
             </dl>
           <!-- /.l-rows row --></div>
