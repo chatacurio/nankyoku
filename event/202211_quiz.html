@@ -383,7 +383,7 @@ dash {
     <section
       id="rule"
       class="f-section__quiz is-fill__lightBrown"
-      v-if="phase >= QUIZ_PHASE.READY">
+      v-if="current.phase >= QUIZ_PHASE.READY">
       <div class="f-section__quiz--body">
         <div class="o-heading__section is-quiz">
           <h2 class="o-heading__section--item">
@@ -394,7 +394,7 @@ dash {
         <div class="o-list__rule is-quiz">
           <ul class="o-list__rule--items">
             <li class="o-list__rule--item">この問題は <em class="em">{{ quiz.title }}編</em> です。他の問題を行う場合はこちらから遷移してください。<br>
-              <div class="o-list is-triangle">
+              <div class="o-list is-triangle u-text__small">
                 <ul class="o-list--items">
                   <li class="o-list--item">
                     <a class="a" href="/nankyoku/event/202211_quiz.html">FF XIV編</a>
@@ -422,11 +422,11 @@ dash {
           </dl>
         </div>
 
-        <div class="o-action__quiz is-start" v-if="phase < QUIZ_PHASE.STARTED">
+        <div class="o-action__quiz is-start" v-if="current.phase < QUIZ_PHASE.STARTED">
           <button
             class="o-action__quiz--item"
             @click.prevent.once="startQuiz"
-            :disabled="phase >= QUIZ_PHASE.STARTED">
+            :disabled="current.phase >= QUIZ_PHASE.STARTED">
             START
           </button>
         <!-- /.o-action__quiz --></div>
@@ -493,7 +493,7 @@ dash {
                               :type="question.type"
                               :value="selector.value"
                               v-model="question.value"
-                              :disabled="phase >= QUIZ_PHASE.DONE">
+                              :disabled="current.phase >= QUIZ_PHASE.DONE">
                             {{ selector.label }}
                           </label>
                         <!-- /.o-input__quiz --></div>
@@ -515,7 +515,7 @@ dash {
                         type="text"
                         placeholder="ここに入力してください"
                         v-model="question.value"
-                        :disabled="phase >= QUIZ_PHASE.DONE">
+                        :disabled="current.phase >= QUIZ_PHASE.DONE">
                     </template>
                     <template v-if="question.type === ANSWER_TYPE.TEXTAREA">
                       <textarea
@@ -524,7 +524,7 @@ dash {
                         rows="5"
                         placeholder="ここに入力してください"
                         v-model="question.value"
-                        :disabled="phase >= QUIZ_PHASE.DONE">
+                        :disabled="current.phase >= QUIZ_PHASE.DONE">
                       </textarea>
                     </template>
                   <!-- /.o-input__quiz --></div>
@@ -577,7 +577,7 @@ dash {
           
           <div
             class="o-label__done is-quiz"
-            v-if="phase >= QUIZ_PHASE.DONE"
+            v-if="current.phase >= QUIZ_PHASE.DONE"
             ref="doneTelop">
             <img
               class="o-label__done--item"
@@ -592,7 +592,7 @@ dash {
     <section
       id="section-score"
       class="f-section__quiz is-fill__lightBrown"
-      v-if="phase >= QUIZ_PHASE.SCORE">
+      v-if="current.phase >= QUIZ_PHASE.SCORE">
       <div class="f-section__quiz--body">
         <div class="o-heading__section is-quiz">
           <h2 class="o-heading__section--item">
@@ -660,7 +660,7 @@ dash {
 
         
         <div id="section-total-score" class="o-label__score is-quiz">
-          <p class="o-label__score--item" v-if="phase >= QUIZ_PHASE.TOTAL_SCORE">
+          <p class="o-label__score--item" v-if="current.phase >= QUIZ_PHASE.TOTAL_SCORE">
             <span class="o-label__score--label is-score">
               {{ totalScore }} 点
             </span>
