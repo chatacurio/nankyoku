@@ -394,7 +394,7 @@ dash {
         <div class="o-list__rule is-quiz">
           <ul class="o-list__rule--items">
             <li class="o-list__rule--item">この問題は <em class="em">{{ quiz.title }}編</em> です。他の問題を行う場合はこちらから遷移してください。<br>
-              <div class="o-list is-triangle u-text__small">
+              <div class="o-list is-triangle">
                 <ul class="o-list--items">
                   <li class="o-list--item">
                     <a class="a" href="/nankyoku/event/202211_quiz.html">FF XIV編</a>
@@ -406,7 +406,7 @@ dash {
               <!-- /.o-list --></div>
             </li>
             <li class="o-list__rule--item">START を押すと自動でテストが開始されます。</li>
-            <li class="o-list__rule--item">出題教科は{{ categoriesTextInRule }}の {{ this.quiz.categories.length }} 教科です。</li>
+            <li class="o-list__rule--item">出題科目は{{ categoriesTextInRule }}の {{ this.quiz.categories.length }} 科目です。</li>
             <li class="o-list__rule--item">各問には制限時間があり、その制限時間を経過すると自動で次の問題へ移ります。<br>
             （前の問題に戻ることはできません。）</li>
             <li class="o-list__rule--item" v-if="hasName">全問回答後、スコアが表示されます。合計点数掲載後、<strong class="strong">「現在処理中です」の画面が表示されている間は、今表示しているタブをアクティブにした状態で待機してください（他のアプリケーションを触らないでください）。</strong></li>

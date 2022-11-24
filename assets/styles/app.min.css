@@ -228,7 +228,7 @@
     background-image: url(/nankyoku/assets/images/youtube_white.svg); }
 
 .i-scale.is-carousel {
-  background-image: url(/assets/images/icons.ee0820258294740935359d177afc4d87.png);
+  background-image: url(/assets/images/icons.427a5ecf4f8eccca414fa74857fcf573.png);
   background-position: 0px 0px;
   width: 48px;
   height: 48px;
@@ -4974,7 +4974,7 @@ label {
     -webkit-box-pack: end;
     -ms-flex-pack: end;
     justify-content: flex-end;
-    font-size: 1.8rem;
+    font-size: 1.4rem;
     font-family: 'Noto Sans JP', sans-serif;
     font-weight: 900; }
   .o-label__name.is-quiz .o-label__name--description {
@@ -5196,7 +5196,7 @@ label {
   ```
   */
 .o-list {
-  margin-top: 14px;
+  margin-top: 1em;
   /*
   #styleguide
   連番リスト
@@ -5256,7 +5256,7 @@ label {
   .o-list:first-child {
     margin-top: 0; }
   .o-list .o-list--unit {
-    margin-top: 14px; }
+    margin-top: 1em; }
   .o-list.is-border .o-list--item {
     margin-top: 1em;
     padding-bottom: 1em;
@@ -5269,7 +5269,7 @@ label {
   .o-list.is-triangle .o-list--term {
     position: relative;
     text-indent: -0.9em;
-    margin-top: 14px;
+    margin-top: 0.3em;
     padding-left: 0.9em; }
     .o-list.is-circle .o-list--item:first-child,
     .o-list.is-circle .o-list--term:first-child, .o-list.is-rectangle .o-list--item:first-child,
@@ -5724,15 +5724,16 @@ label {
         margin-top: 0; } }
   .o-list__rule.is-quiz {
     max-width: 660px;
-    margin: .20px auto 0;
+    margin: 20px auto 0;
     padding: 3em;
     border: 1px solid #99968d; }
     .o-list__rule.is-quiz:first-child {
       margin-top: 0; }
     .o-list__rule.is-quiz .o-list__rule--item {
       position: relative;
+      font-size: 1.4rem;
       text-indent: -0.9em;
-      margin-top: 14px;
+      margin-top: 1em;
       padding-left: 0.9em; }
       .o-list__rule.is-quiz .o-list__rule--item:first-child {
         margin-top: 0; }
