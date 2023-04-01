@@ -232,7 +232,7 @@
     background-image: url(/nankyoku/assets/images/youtube_white.svg); }
 
 .i-scale.is-carousel {
-  background-image: url(/assets/images/icons.c373e7936288489a7f049a52ece6d509.png);
+  background-image: url(/assets/images/icons.6fbb394acd218f1f8ba0ca3906e937b3.png);
   background-position: 0px 0px;
   width: 48px;
   height: 48px;
@@ -2943,11 +2943,13 @@ label {
     align-items: center;
     position: relative; }
     .l-unit__clock.is-dayDreaming .l-unit__clock--header {
+      width: 100%;
       position: absolute;
       top: 7em;
       left: 50%;
       -webkit-transform: translateX(-50%);
       transform: translateX(-50%);
+      padding: 0 20px;
       z-index: 1; }
     .l-unit__clock.is-dayDreaming .l-unit__clock--description {
       width: 100%; }
@@ -4600,7 +4602,8 @@ label {
     .o-heading__page.is-dayDreaming .o-heading__page--item {
       font-size: 2.6rem;
       font-weight: bold;
-      font-family: 'Noto Sans JP', sans-serif; }
+      font-family: 'Noto Sans JP', sans-serif;
+      text-align: center; }
     @media screen and (max-width: 768px) {
       .o-heading__page.is-dayDreaming .o-heading__page--item {
         font-size: 2rem; } }
