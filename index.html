@@ -421,11 +421,15 @@ dash {
       <!--  /.o-heading__section --></div>
 
       <div class="o-figure__banner is-home">
-        <img
-          class="o-figure__banner--item is-lazyload"
-          :src="`${$GLOBAL_NAME.IMAGES.DIRECTORY}${$GLOBAL_NAME.IMAGES.LOADING_IMAGE_FILE}`"
-          :data-src="`${$GLOBAL_NAME.IMAGES.DIRECTORY}banner_top_01.jpg`"
-          alt="">
+        <a
+          class="o-figure__banner--link"
+          :href="PAGE_PATH.SUB.CLOCK">
+          <img
+            class="o-figure__banner--item is-lazyload"
+            :src="`${$GLOBAL_NAME.IMAGES.DIRECTORY}${$GLOBAL_NAME.IMAGES.LOADING_IMAGE_FILE}`"
+            :data-src="`${$GLOBAL_NAME.IMAGES.DIRECTORY}banner_top_02.jpg`"
+            alt="">
+        </a>
       <!-- /.o-figure__banner --></div>
     <!-- /.f-section__home body --></div>
   <!-- /.f-section__home --></section>
