@@ -412,6 +412,15 @@ dash {
                   :style="`transform: translate(${DEFAULT_CENTER_POSITION.x}%, ${DEFAULT_CENTER_POSITION.y}%) rotate(${clock.angle.seconds}deg)`"
                   alt="">
               </div>
+              <button
+                :class="[
+                  'o-figure__clock--item',
+                  'is-controller',
+                  audio.isPlay ? 'is-stop' : 'is-play',
+                ]"
+                @click="togglePlay">
+                {{ audio.isPlay ? '停止' : '再生' }}
+              </button>
             <!-- /.o-figure__clock --></div>
           <!-- /.l-unit__clock description --></div>
 

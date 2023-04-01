@@ -232,7 +232,7 @@
     background-image: url(/nankyoku/assets/images/youtube_white.svg); }
 
 .i-scale.is-carousel {
-  background-image: url(/assets/images/icons.2f39c33d4fd11697a3f3c248a077b3b7.png);
+  background-image: url(/assets/images/icons.f4878549f724bd07b95b09cf11be498a.png);
   background-position: 0px 0px;
   width: 48px;
   height: 48px;
@@ -4283,7 +4283,7 @@ label {
     position: relative;
     overflow: hidden;
     margin: 0 auto;
-    padding: 120px;
+    padding: 15.5vmin;
     background-image: url(/nankyoku/assets/images/tools/clock/background_frame.png);
     background-repeat: repeat;
     border: 20px solid #ff9910;
@@ -4324,25 +4324,25 @@ label {
       .o-figure__clock.is-dayDreaming .o-figure__clock--item.is-dial {
         position: absolute; }
         .o-figure__clock.is-dayDreaming .o-figure__clock--item.is-dial.is-0 {
-          width: 7vmin;
+          width: 6vmin;
           top: 14px;
           left: 50%;
           -webkit-transform: translateX(-50%);
           transform: translateX(-50%); }
         .o-figure__clock.is-dayDreaming .o-figure__clock--item.is-dial.is-15 {
-          width: 7vmin;
+          width: 6vmin;
           top: 50%;
           left: 14px;
           -webkit-transform: translateY(-50%) rotate(-90deg);
           transform: translateY(-50%) rotate(-90deg); }
         .o-figure__clock.is-dayDreaming .o-figure__clock--item.is-dial.is-30 {
-          width: 7vmin;
+          width: 6vmin;
           bottom: 14px;
           left: 50%;
           -webkit-transform: translateX(-50%) rotate(180deg);
           transform: translateX(-50%) rotate(180deg); }
         .o-figure__clock.is-dayDreaming .o-figure__clock--item.is-dial.is-45 {
-          width: 7vmin;
+          width: 6vmin;
           top: 50%;
           right: 14px;
           -webkit-transform: translateY(-50%) rotate(90deg);
@@ -4355,6 +4355,57 @@ label {
         top: 0;
         left: 0;
         background-color: rgba(0, 0, 0, 0); }
+      .o-figure__clock.is-dayDreaming .o-figure__clock--item.is-controller {
+        max-width: none;
+        display: block;
+        position: absolute;
+        bottom: 5vmin;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%);
+        overflow: hidden;
+        color: rgba(255, 255, 255, 0); }
+        .o-figure__clock.is-dayDreaming .o-figure__clock--item.is-controller.is-play {
+          content: '';
+          width: 0;
+          height: 0;
+          display: inline-block;
+          vertical-align: middle;
+          background-color: transparent;
+          border-style: solid;
+          border-width: 3vmin 0 3vmin 5vmin;
+          border-color: transparent transparent transparent #fff; }
+        .o-figure__clock.is-dayDreaming .o-figure__clock--item.is-controller.is-stop {
+          width: 4vmin;
+          height: 5vmin;
+          border-left: 1.4vmin solid #fff;
+          border-right: 1.4vmin solid #fff; }
+    @media screen and (max-width: 768px) {
+      .o-figure__clock.is-dayDreaming {
+        border: 15px solid #ff9910; }
+        .o-figure__clock.is-dayDreaming .o-figure__clock--item.is-sky {
+          border: 6px solid #001f75; }
+        .o-figure__clock.is-dayDreaming .o-figure__clock--item.is-dial.is-0 {
+          top: 10px; }
+        .o-figure__clock.is-dayDreaming .o-figure__clock--item.is-dial.is-15 {
+          left: 10px; }
+        .o-figure__clock.is-dayDreaming .o-figure__clock--item.is-dial.is-30 {
+          bottom: 10px; }
+        .o-figure__clock.is-dayDreaming .o-figure__clock--item.is-dial.is-45 {
+          right: 10px; } }
+    @media screen and (max-width: 540px) {
+      .o-figure__clock.is-dayDreaming {
+        border: 10px solid #ff9910; }
+        .o-figure__clock.is-dayDreaming .o-figure__clock--item.is-sky {
+          border: 3px solid #001f75; }
+        .o-figure__clock.is-dayDreaming .o-figure__clock--item.is-dial.is-0 {
+          top: 7px; }
+        .o-figure__clock.is-dayDreaming .o-figure__clock--item.is-dial.is-15 {
+          left: 7px; }
+        .o-figure__clock.is-dayDreaming .o-figure__clock--item.is-dial.is-30 {
+          bottom: 7px; }
+        .o-figure__clock.is-dayDreaming .o-figure__clock--item.is-dial.is-45 {
+          right: 7px; } }
   .o-figure__hero.is-home .o-figure__hero--item {
     height: 100vh;
     background-position: center center;
@@ -4547,9 +4598,12 @@ label {
       font-size: 2.6rem;
       font-weight: bold;
       font-family: 'Noto Sans JP', sans-serif; }
-    @media screen and (max-width: 1024px) {
+    @media screen and (max-width: 768px) {
       .o-heading__page.is-dayDreaming .o-heading__page--item {
-        background-position: top; } }
+        font-size: 2rem; } }
+    @media screen and (max-width: 540px) {
+      .o-heading__page.is-dayDreaming .o-heading__page--item {
+        font-size: 1.8rem; } }
 
 .o-heading__part {
   margin: 14px 0; }
