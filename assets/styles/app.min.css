@@ -6,10 +6,14 @@
  *
  * @param $numerator: 相対値を求めたいサイズ
  * @param $denominator: 相対値計算の基準となるサイズ
- * @return {int} 算出相対値
+ * @returnint算出相対値
  */
 /**
  * 文字列を数値に変換
+ */
+/**
+ * HSB 値を RGB 値に変換する
+ * @see http://creator.aainc.co.jp/archives/7447
  */
 /**
  * リンクスタイルを、デフォルト下線なし、hover 時下線ありに変更する
@@ -228,7 +232,7 @@
     background-image: url(/nankyoku/assets/images/youtube_white.svg); }
 
 .i-scale.is-carousel {
-  background-image: url(/assets/images/icons.bf8adc55116f154be01f85788e284bb8.png);
+  background-image: url(/assets/images/icons.983e097d667db39612cdc30cd25a6ada.png);
   background-position: 0px 0px;
   width: 48px;
   height: 48px;
@@ -1432,6 +1436,35 @@ label {
     .f-section__hero.is-quizEntry {
       -webkit-filter: blur(20px);
       filter: blur(20px); }
+    .f-section__hero.is-dayDreamingClock {
+      background: -webkit-gradient(linear, left top, left bottom, from(#ffae00), to(#ffc600));
+      background: linear-gradient(180deg, #ffae00 0%, #ffc600 100%);
+      -webkit-transition: all 0.3s ease;
+      transition: all 0.3s ease; }
+      .f-section__hero.is-dayDreamingClock.is-blur {
+        -webkit-filter: blur(16px);
+        filter: blur(16px); }
+      .f-section__hero.is-dayDreamingClock .f-section__hero--body {
+        width: 100%;
+        height: 100vh;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        overflow: hidden;
+        margin-top: -80px;
+        background-position: center top;
+        background-repeat: no-repeat;
+        background-size: contain; }
+      @media screen and (max-width: 768px) {
+        .f-section__hero.is-dayDreamingClock .f-section__hero--body {
+          margin-top: -60px; } }
   .f-section__profile {
     padding: 30px 0;
     background-color: white;
@@ -2892,6 +2925,38 @@ label {
     .l-unit__carousel .l-unit__carousel--action.is-thumbnail {
       margin-top: 20px;
       padding: 0 40px; }
+  .l-unit__clock.is-dayDreaming {
+    width: 100%;
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    position: relative; }
+    .l-unit__clock.is-dayDreaming .l-unit__clock--header {
+      position: absolute;
+      top: 7em;
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+      transform: translateX(-50%);
+      z-index: 1; }
+    .l-unit__clock.is-dayDreaming .l-unit__clock--description {
+      width: 100%; }
+    .l-unit__clock.is-dayDreaming .l-unit__clock--action {
+      position: absolute;
+      bottom: 3em;
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+      transform: translateX(-50%); }
   .l-unit__drawerNavigation {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -4212,6 +4277,84 @@ label {
       margin-top: 4px; }
       .o-figure__carouselThumbnail .o-figure__carouselThumbnail--caption:first-child {
         margin-top: 0; }
+  .o-figure__clock.is-dayDreaming {
+    width: 90vmin;
+    height: 90vmin;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    padding: 120px;
+    background-image: url(/nankyoku/assets/images/tools/clock/background_frame.png);
+    background-repeat: repeat;
+    border: 20px solid #ff9910;
+    border-radius: 50%; }
+    .o-figure__clock.is-dayDreaming .o-figure__clock--item {
+      width: 28vmin;
+      display: block; }
+      .o-figure__clock.is-dayDreaming .o-figure__clock--item.is-sky {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+        border: 10px solid #001f75;
+        border-radius: 50%;
+        -webkit-filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.4));
+        filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.4)); }
+      .o-figure__clock.is-dayDreaming .o-figure__clock--item.is-background {
+        width: 140%;
+        max-width: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -43%);
+        transform: translate(-50%, -43%); }
+      .o-figure__clock.is-dayDreaming .o-figure__clock--item.is-body {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-10%, -72%);
+        transform: translate(-10%, -72%); }
+      .o-figure__clock.is-dayDreaming .o-figure__clock--item.is-hand, .o-figure__clock.is-dayDreaming .o-figure__clock--item.is-hour, .o-figure__clock.is-dayDreaming .o-figure__clock--item.is-minute, .o-figure__clock.is-dayDreaming .o-figure__clock--item.is-second {
+        position: absolute;
+        top: 50%;
+        left: 50%; }
+      .o-figure__clock.is-dayDreaming .o-figure__clock--item.is-hour, .o-figure__clock.is-dayDreaming .o-figure__clock--item.is-minute, .o-figure__clock.is-dayDreaming .o-figure__clock--item.is-second {
+        -webkit-transform-origin: center 100% 0;
+        transform-origin: center 100% 0; }
+      .o-figure__clock.is-dayDreaming .o-figure__clock--item.is-dial {
+        position: absolute; }
+        .o-figure__clock.is-dayDreaming .o-figure__clock--item.is-dial.is-0 {
+          width: 7vmin;
+          top: 14px;
+          left: 50%;
+          -webkit-transform: translateX(-50%);
+          transform: translateX(-50%); }
+        .o-figure__clock.is-dayDreaming .o-figure__clock--item.is-dial.is-15 {
+          width: 7vmin;
+          top: 50%;
+          left: 14px;
+          -webkit-transform: translateY(-50%) rotate(-90deg);
+          transform: translateY(-50%) rotate(-90deg); }
+        .o-figure__clock.is-dayDreaming .o-figure__clock--item.is-dial.is-30 {
+          width: 7vmin;
+          bottom: 14px;
+          left: 50%;
+          -webkit-transform: translateX(-50%) rotate(180deg);
+          transform: translateX(-50%) rotate(180deg); }
+        .o-figure__clock.is-dayDreaming .o-figure__clock--item.is-dial.is-45 {
+          width: 7vmin;
+          top: 50%;
+          right: 14px;
+          -webkit-transform: translateY(-50%) rotate(90deg);
+          transform: translateY(-50%) rotate(90deg); }
+      .o-figure__clock.is-dayDreaming .o-figure__clock--item.is-overlay {
+        width: 100%;
+        max-width: none;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0); }
   .o-figure__hero.is-home .o-figure__hero--item {
     height: 100vh;
     background-position: center center;
@@ -4397,6 +4540,15 @@ label {
       background-size: contain; }
     @media screen and (max-width: 1024px) {
       .o-heading__page.is-quiz .o-heading__page--item {
+        background-position: top; } }
+  .o-heading__page.is-dayDreaming {
+    position: relative; }
+    .o-heading__page.is-dayDreaming .o-heading__page--item {
+      font-size: 2.6rem;
+      font-weight: bold;
+      font-family: 'Noto Sans JP', sans-serif; }
+    @media screen and (max-width: 1024px) {
+      .o-heading__page.is-dayDreaming .o-heading__page--item {
         background-position: top; } }
 
 .o-heading__part {
