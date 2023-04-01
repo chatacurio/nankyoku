@@ -232,7 +232,7 @@
     background-image: url(/nankyoku/assets/images/youtube_white.svg); }
 
 .i-scale.is-carousel {
-  background-image: url(/assets/images/icons.f4878549f724bd07b95b09cf11be498a.png);
+  background-image: url(/assets/images/icons.c373e7936288489a7f049a52ece6d509.png);
   background-position: 0px 0px;
   width: 48px;
   height: 48px;
@@ -4380,6 +4380,9 @@ label {
           height: 5vmin;
           border-left: 1.4vmin solid #fff;
           border-right: 1.4vmin solid #fff; }
+    @media screen and (max-width: 1024px) {
+      .o-figure__clock.is-dayDreaming {
+        padding: 13.5vmin; } }
     @media screen and (max-width: 768px) {
       .o-figure__clock.is-dayDreaming {
         border: 15px solid #ff9910; }
