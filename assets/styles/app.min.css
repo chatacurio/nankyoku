@@ -232,7 +232,7 @@
     background-image: url(/nankyoku/assets/images/youtube_white.svg); }
 
 .i-scale.is-carousel {
-  background-image: url(/assets/images/icons.0fd0b57e95c8fa13f4dba0586cf82381.png);
+  background-image: url(/assets/images/icons.a7f3418f9d516112c98c27984c6ee1b2.png);
   background-position: 0px 0px;
   width: 48px;
   height: 48px;
@@ -1462,6 +1462,13 @@ label {
         background-position: center top;
         background-repeat: no-repeat;
         background-size: contain; }
+        .f-section__hero.is-dayDreamingClock .f-section__hero--body.is-primary {
+          position: relative;
+          z-index: 1; }
+        .f-section__hero.is-dayDreamingClock .f-section__hero--body.is-lyric {
+          position: absolute;
+          top: 0;
+          left: 0; }
       @media screen and (max-width: 768px) {
         .f-section__hero.is-dayDreamingClock .f-section__hero--body {
           margin-top: -60px; } }
@@ -5172,6 +5179,17 @@ label {
   @media screen and (max-width: 540px) {
     .o-label__loading .o-label__loading--item {
       font-size: 2.6rem; } }
+
+.o-label__lyric.is-dayDreaming {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative; }
+  .o-label__lyric.is-dayDreaming .o-label__lyric--item {
+    font-size: 30vmin;
+    font-weight: bold;
+    font-family: 'Noto Sans JP', sans-serif;
+    white-space: nowrap; }
 
 .o-label__name.is-quiz {
   width: 100%;
